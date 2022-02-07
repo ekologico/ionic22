@@ -8,12 +8,14 @@ import { DniComponent } from './components/dni/dni.component';
 import { ImcComponent } from './components/imc/imc.component';
 import { LayoutModule } from './layout/layout.module';
 import { MenuSuperiorComponent } from './layout/menu-superior/menu-superior.component';
+import { JuegoPptComponent } from './components/juego-ppt/juego-ppt.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DniComponent,
-    ImcComponent
+    ImcComponent,
+    JuegoPptComponent
   ],
   imports: [
     BrowserModule,

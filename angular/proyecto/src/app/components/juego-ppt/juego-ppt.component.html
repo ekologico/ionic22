@@ -1,0 +1,25 @@
+<main>
+    <div>
+        <h1>Juega y Gana!!!</h1>
+    </div>
+    <div id="botonera" class="botones">
+        <div id="piedra" class="boton" onclick="selectPlay(0)">
+            <img src="./assets/imagenes-ppt/rock.png" class="col-2" alt="Piedra">
+        </div>
+        <div id="papel" class="boton" onclick="selectPlay(1)">
+            <img src="./assets/imagenes-ppt/paper.png" class="col-2" alt="Piedra">
+        </div>
+        <div id="tijera" class="boton" onclick="selectPlay(2)">
+            <img src="./assets/imagenes-ppt/scissors.png" class="col-2" alt="Piedra">
+        </div>
+    </div>
+    <div class="contenedor">
+        <button class="button-play" (click)="playNow()">Jugar</button>
+    </div>
+    <div id="botonera-p" class="botones-p">
+        <div id="piedra" class="boton-p">
+            <img id="computerPlay">
+        </div>
+    </div>
+
+</main>
