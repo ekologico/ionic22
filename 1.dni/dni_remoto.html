@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <script src='dni_remoto.js'></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>DNI</h1>
+    <label for="nombre">nombre</label>
+    <input type="text" id="nombre" name="nombre" required
+     maxlength="" size="8" value="prueba">
+
+    <label for="dni">DNI</label>
+    <input type="text" id="dni" name="dni" required
+       minlength="4" maxlength="8" size="8" value="00523821">
+      
+       <label for="letra">LETRA</label>
+      <input type="text" id="letra" name="letra" required
+       minlength="1" maxlength="1" size="1" value="a">
+
+       <button  id ="btn_comprobar_dni">Comprobar</button>
+       <hr>
+       <div id='respuesta'></div>
+
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>IMC</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+   <!--  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>--> 
+    <script src='main.js'></script>
+</head>
+<body>
+
+    <!-- Enunciado
+        El índice de masa corporal es una medida de salud que indica la relación
+        entre peso y estatura
+        La fórmula es: 
+        IMC = peso (kg)/estatura al cuadrado
+
+        <16 desnutrido
+        >= 16 y <18 delgado
+        >=18 y <25 ideal
+        >=25 y <31 sobrepeso
+        >= obesidad
+
+        app que permita calcular el imc de una persona
+        infomando de su valor nominal y numérico
+        además la app debe acompañar el resultado con una imagen para cada
+        categoría.
+        TODO: ordenar
+        TODO: Mostrar, por cada IMC que se calcula, la media de los imcs
+        de los IMC numéricos 
+     -->
+
+<h1>IMC</h1>
+<hr>
+     <label for="peso">Peso (kg)</label>
+     <input type="number" id="peso" name="peso" required
+        minlength="1" maxlength="3" size="3" value="100">
+       
+        <label for="estatura">Estatura (metros)</label>
+       <input type="float" id="estatura" name="estatura" required
+        minlength="1" maxlength="2" size="5" value="1.70">
+ 
+        <button  id ="calcular_imc">Calcular IMC</button>
+        <hr>
+        <div id='respuesta'></div>
+        <figure>    
+            <img id="imagen_imc">
+            <figcaption id="leyenda">
+
+            </figcaption>
+        </figure>
+<hr>
+<div id ="media"></div>
+<hr>
+<button id="boton_reset">Limpiar</button>
+<button id="boton_lista_de_general">lista de general</button>
+<button id="boton_ordenar_amayor">IMC a mayor</button>
+<button id="boton_ordenar_amenor">IMC a menor</button>
+<button id="boton_lista_de_obesos">lista de obesos</button>
+<div id="historial2"></div>
+<div id="historial"></div>
+
+</body>
+</html>

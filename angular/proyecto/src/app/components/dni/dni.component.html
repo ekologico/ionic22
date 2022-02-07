@@ -1,0 +1,14 @@
+<h1>{{titulo}}</h1>
+    <div id="botondni">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">DNI</span>
+            </div>
+            <input [(ngModel)]="numero" type="text" class="form-control" placeholder="Introduzca su dni" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+        <!-- <label for="dni">DNI</label> -->
+        <!-- <input type="text" [(ngModel)]="numero" id="dni" name="dni">
+ -->        <!--  <input type="button" value="CALCULAR LETRA" (click)="calcularLetraDni()">-->
+        <button type="button" class="btn btn-primary" (click)="calcularLetraDni()">Calcular Letra</button>
+    </div>    
+<h2 id="resultado">{{letra}}</h2>

@@ -1,0 +1,76 @@
+<h1>IMC</h1>
+
+<hr>
+<p>Hoy {{hoy | date:'medium'}}</p>
+<p>ultima visita {{ultima_vez | date:'medium'  }}</p>
+
+<hr>
+     <label for="peso">Peso (kg)</label>
+     <input
+      type="number"
+      [(ngModel)]="oimc.peso"
+       id="peso"
+      name="peso"
+
+        minlength="1"
+         maxlength="3"
+          size="3" 
+         >
+       
+        <label for="estatura">Estatura (metros)</label>
+       <input 
+        type="float" 
+        id="estatura" 
+        name="estatura" 
+        [(ngModel)]="oimc.estatura"
+        minlength="1"
+        maxlength="2" 
+        size="5" 
+        >
+ 
+        <input 
+        (click)="calcularImc()"
+        type="button" 
+        value="Calcular" >
+
+        
+        <hr>
+        <h3 *ngIf ="oimc.imc !=0 ">imc calculado: {{oimc.imc}}</h3>
+        
+        <figure>    
+            <img id="imagen_imc">
+            <figcaption id="leyenda">
+
+            </figcaption>
+        </figure>
+
+
+        <div *ngIf ="array_imc && array_imc.length > 0">
+          <table> 
+              <thead> 
+                <th >PESO </th>
+                <th>ALTURA</th>
+                <th>IMC NUM</th>
+                <th>LECTURA </th>
+                <th>IMAGEN</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let itemimc of array_imc">  
+                  <td>{{itemimc.peso}}</td>
+                  <td>{{itemimc.estatura}}</td>
+                  <td>{{itemimc.imc}}</td>
+                  <td>{{itemimc.lectura}}</td>
+                  
+                  <td><img src="{{itemimc.foto}}" width="30px"> </td>
+
+                </tr>
+              </tbody>
+          </table>
+<input type="button" (click)="ordenarPorPeso()" value="ordenar">
+<input type="button" (click)="subirUnKilo()" value="subir 1kg">
+
+        </div>
+
+        
+
+
