@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Marcador3Component } from '../marcador3/marcador3.component';
 
 @Component({
   selector: 'app-juego-ppt',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JuegoPptComponent implements OnInit {
   //estadisticas: Array<string> = [];
-  puntos_maquina: number = 0;
-  puntos_usuario: number = 0;
+  //puntos_maquina: number = 0;
+ // puntos_usuario: number = 0;
   seleccionado?: boolean; //para controlar si el usuario eligió jugada
   readonly FOTO_PIEDRA = "assets/imagenes-ppt/piedra.png";
   readonly FOTO_PAPEL = "/assets/imagenes-ppt/papel.png";
@@ -16,6 +17,9 @@ export class JuegoPptComponent implements OnInit {
 
   ids_botones: Array<string> = ["rock", "paper", "scissors"];
   img_botones: Array<string> = ["piedra", "papel", "tijera"];
+
+
+ // marcador:Marcador3Component= new Marcador3Component;
 
   /*
       La tabla de decision para determinar el ganador.
@@ -35,17 +39,22 @@ export class JuegoPptComponent implements OnInit {
     [-1, 1, 0]
   ];
 
+  @ViewChild (Marcador3Component)marcador?:Marcador3Component; //para que vea al hijo
+
+ngAfterViewInit() {
+  console.log("ng viewwwww")
+  //this.marcador.ponerEmpateADiez();
+
+}
+
+
   constructor() {
     this.seleccionado = false;
-
+    console.log("contructor juego raiz")
   }
 
   ngOnInit(): void {
   }
-
-
-
-
 
 
   selectPlay(play: number): void {
@@ -87,9 +96,6 @@ export class JuegoPptComponent implements OnInit {
   }
 
 
-
-
-
   getComputerPlay(): number {
     return Math.floor(Math.random() * 3);
   }
@@ -124,39 +130,14 @@ export class JuegoPptComponent implements OnInit {
       // -1 GANA EL PC
 
       localStorage.removeItem("selected");
-
-
       //    result
+// llama a una funcion del componente marcador
+      this.marcador?.actualizarMarcador(result)
 
-      this.actualizarMarcador(result)
-
-
-      
     }
 
   }
 
-
-  actualizarMarcador(result: number): void {
-    switch (result) {
-      case 1:
-        this.puntos_usuario++
-        break;
-      case 0:
-        this.puntos_maquina++
-        break;
-      default:
-        this.puntos_maquina++
-        this.puntos_usuario++
-        break;
-    }
-  }
-
-
-  ponerMarcadoraCero(){
-    this.puntos_maquina=0;
-    this.puntos_usuario=0;
-  }
 
 }
 

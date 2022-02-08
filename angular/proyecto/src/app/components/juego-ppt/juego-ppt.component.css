@@ -1,25 +1,25 @@
 .botones,
 .contenedor {
     display: flex;
-    width: 1000px;
+  /*   width: 1000px; */
     justify-content: space-around;
     margin: 0 auto;
 }
 
 .botones-p {
     display: flex;
-    width: 1000px;
+    width: 500px;
     justify-content: space-around;
     margin: 0 auto;
 }
 
 .boton {
-    width: 300px;
+    width: 100px;
     transition: transform 1.5s;
 }
 
 .boton-p {
-    width: 200px;
+    width: 100px;
 }
 
 .boton:hover {
