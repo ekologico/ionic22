@@ -9,13 +9,15 @@ import { ImcComponent } from './components/imc/imc.component';
 import { LayoutModule } from './layout/layout.module';
 import { MenuSuperiorComponent } from './layout/menu-superior/menu-superior.component';
 import { JuegoPptComponent } from './components/juego-ppt/juego-ppt.component';
+import { Marcador3Component } from './components/marcador3/marcador3.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DniComponent,
     ImcComponent,
-    JuegoPptComponent
+    JuegoPptComponent,
+    Marcador3Component
   ],
   imports: [
     BrowserModule,
