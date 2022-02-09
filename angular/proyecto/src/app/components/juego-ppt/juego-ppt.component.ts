@@ -15,7 +15,7 @@ export class JuegoPptComponent implements OnInit {
   readonly FOTO_PAPEL = "/assets/imagenes-ppt/papel.png";
   readonly FOTO_TIJERA = "./assets/imagenes-ppt/tijera.png";
 
-  ids_botones: Array<string> = ["rock", "paper", "scissors"];
+  ids_botones: Array<string> = ["piedra", "papel", "tijera"];
   img_botones: Array<string> = ["piedra", "papel", "tijera"];
 
 
@@ -140,11 +140,3 @@ ngAfterViewInit() {
 
 
 }
-
-
-
-
-
-
-
-

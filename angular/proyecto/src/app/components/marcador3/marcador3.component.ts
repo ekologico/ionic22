@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Marcador } from 'src/app/marcador';
 
 @Component({
   selector: 'app-marcador3',
@@ -81,7 +82,7 @@ if (aux_puntos_pc){
               break;
           default:
              
-              this.puntos_usuario++
+              this.puntos_maquina++
               break;
       }
 
