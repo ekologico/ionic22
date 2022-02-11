@@ -1,0 +1,146 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "title": "EL DUCADO que me robaron",
+      "author": "BB",
+      "id": 2
+    },
+    {
+      "posts": [
+        {
+          "id": 1,
+          "title": "json-server",
+          "author": "typicode"
+        }
+      ],
+      "comments": [
+        {
+          "id": 1,
+          "body": "some comment",
+          "postId": 1
+        }
+      ],
+      "profile": {
+        "name": "typicode"
+      },
+      "alumno": [
+        {
+          "id": 8,
+          "nombre": "Vale",
+          "apellido": "More",
+          "email": "vmore@correo.es",
+          "edad": 23,
+          "creadoEn": "2022-02-01T09:33:04.818+00:00",
+          "fotoHashCode": null,
+          "links": []
+        },
+        {
+          "id": 14,
+          "nombre": "Bernards",
+          "apellido": "Ballestrini",
+          "email": "bb@correo.es",
+          "edad": 23,
+          "creadoEn": "2022-02-10T12:22:01.929+00:00",
+          "fotoHashCode": null,
+          "links": []
+        },
+        {
+          "id": 15,
+          "nombre": "Bernards",
+          "apellido": "Ballestrini",
+          "email": "bb@correo.es",
+          "edad": 23,
+          "creadoEn": "2022-02-10T12:22:02.104+00:00",
+          "fotoHashCode": null,
+          "links": []
+        },
+        {
+          "id": 18,
+          "nombre": "Bernards",
+          "apellido": "Ballestrini",
+          "email": "bb@correo.es",
+          "edad": 23,
+          "creadoEn": "2022-02-10T12:22:02.589+00:00",
+          "fotoHashCode": null,
+          "links": []
+        },
+        {
+          "id": 21,
+          "nombre": "Bernards",
+          "apellido": "Ballestrini",
+          "email": "bb@correo.es",
+          "edad": 23,
+          "creadoEn": "2022-02-10T12:22:03.057+00:00",
+          "fotoHashCode": null,
+          "links": []
+        },
+        {
+          "id": 22,
+          "nombre": "Bernards",
+          "apellido": "Ballestrini",
+          "email": "bb@correo.es",
+          "edad": 23,
+          "creadoEn": "2022-02-10T12:22:03.183+00:00",
+          "fotoHashCode": null,
+          "links": []
+        },
+        {
+          "id": 24,
+          "nombre": "Bernards",
+          "apellido": "Ballestrini",
+          "email": "bb@correo.es",
+          "edad": 23,
+          "creadoEn": "2022-02-10T12:22:03.501+00:00",
+          "fotoHashCode": null,
+          "links": []
+        },
+        {
+          "id": 25,
+          "nombre": "Vale",
+          "apellido": "More",
+          "email": "vmore@correo.es",
+          "edad": 23,
+          "creadoEn": "2022-02-10T12:29:27.681+00:00",
+          "fotoHashCode": null,
+          "links": []
+        },
+        {
+          "id": 26,
+          "nombre": "Vale",
+          "apellido": "More",
+          "email": "vmore@correo.es",
+          "edad": 23,
+          "creadoEn": "2022-02-10T12:29:56.298+00:00",
+          "fotoHashCode": null,
+          "links": []
+        },
+        {
+          "id": 27,
+          "nombre": "Vale",
+          "apellido": "More",
+          "email": "vmore@correo.es",
+          "edad": 23,
+          "creadoEn": "2022-02-10T12:29:57.183+00:00",
+          "fotoHashCode": null,
+          "links": []
+        }
+      ],
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

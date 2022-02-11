@@ -19,16 +19,28 @@ export class AlumnoComponent implements OnInit {
 
 
   lista_alumnos: Array<Alumno>;
+  automatico: boolean;
   errorPersonalizado?: string;
+  intervalID:any;
+
+
+
+
   constructor(public servicio_alumnos: AlumnoService) {
     this.lista_alumnos = new Array<Alumno>()
-
+    this.automatico = true;
+    this.intervalID=0;
 
 
   }
 
   //
   ngOnInit(): void {
+
+this.obtenerAlumnos();
+
+/*
+
     //es el sitio para tener datos de fuera
     this.servicio_alumnos.obtenerAlumnos().subscribe
       (
@@ -68,7 +80,7 @@ export class AlumnoComponent implements OnInit {
       );
 
 
-
+*/
   }
 
 
@@ -113,21 +125,96 @@ export class AlumnoComponent implements OnInit {
           console.error('fallo' + error_r)
           this.mostrarError(error_r);
         },
-        next: ()=> {
-          console.log ("acciones finales");
-          console.log ("Alumno borrado");
-          this.lista_alumnos.filter(al => al.id!=alumno.id);
+        next: () => {
+          console.log("acciones finales");
+          console.log("Alumno borrado " + alumno.id);
+          this.lista_alumnos = this.lista_alumnos.filter(alum => alum.id != alumno.id);
+          this.ordenarPorEdad();
+          console.log(this.lista_alumnos);
         }
 
 
       })
-    }
+  }
 
-  
+
 
   editarAlumno(): void {
     console.log("editar alumno")
   }
+
+cambiarCheckActualizar(): void {
+    console.log("Caja Tocada " + this.automatico);
+    this.automatico = !this.automatico;
+    console.log("pasa a " + this.automatico);
+
+if (this.automatico==true){
+ 
+  /*
+  this tiene que llamarse sobre una función anónima 
+  porque en el contexto señalaría al objeto setInterval ¿?
+  */
+  this.intervalID = setInterval((()=>this.obtenerAlumnos()),3000);
+
+
+}else{
+   clearInterval(this.intervalID);
+}
+
+  }
+
+
+  
+
+
+
+  obtenerAlumnos(): void{
+
+    this.servicio_alumnos.obtenerAlumnos().subscribe
+    (
+      {
+        complete: () => { console.log("acabó perfect"); },
+        error: (error_r) => {
+          console.error('fallo' + error_r)
+          this.mostrarError(error_r);
+        },
+        next: listado_alumnos_rx => {
+          this.lista_alumnos = listado_alumnos_rx;
+          this.lista_alumnos.forEach
+        
+            (alumno => {          
+              console.log(`Alumno ${alumno.id} ${alumno.nombre} `) });
+        }
+      }
+    );
+  //observador - el objeto que va a recibir la llamada cuando la respuesta está ///lista.
+
+
+
+  this.servicio_alumnos.obtenerAlumnosConCabeceras().subscribe
+    (
+      {
+        complete: () => { console.log("acabó perfect"); },
+        error: (error_r) => {
+          console.error('fallo' + error_r)
+          this.mostrarError(error_r);
+        },
+        next: http_rx => {
+          this.mostrarCabeceras(http_rx);
+          //casting de un body genérico al array de alumnos
+          this.lista_alumnos = <Array<Alumno>>http_rx.body; //casting al array de alumnos
+          this.lista_alumnos.forEach
+            (alumno => { console.log(`Alumno ${alumno.id} ${alumno.nombre} `) });
+        }
+      }
+    );
+
+
+  }
+
+
+  
+  
 
 
 }

@@ -1,10 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "../../../../../../../profe/Ionicos"
+			"path": "../../../../../.."
 		},
 		{
-			"path": "../../../../../.."
+			"path": "../../../../../../../profe/profeIonicos"
 		}
 	],
 	"settings": {}
