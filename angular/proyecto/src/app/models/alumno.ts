@@ -6,6 +6,7 @@ export class Alumno {
     edad:	number;
     creadoEn: string;
     fotoHashCode?: number;
+   
   
 
 constructor(){
@@ -15,6 +16,7 @@ constructor(){
     this.edad = 0;
     this.apellido="";
     this.creadoEn="";
+ 
 }
 
 

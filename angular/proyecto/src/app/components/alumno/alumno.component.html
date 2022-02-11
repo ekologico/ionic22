@@ -1,1 +1,48 @@
-<p>alumno works!</p>
+<!-- <div *ngIf="error_r !='' ">Content to render when condition is true.</div> -->
+
+<div class="col-12 alert alert-danger" *ngIf="errorPersonalizado">{{errorPersonalizado}}</div>
+
+<div class="row justify-content-center">
+    <div class="col-12 table-responsive">
+        <h2>Alumnos</h2>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">nombre</th>
+                    <th scope="col">apellido</th>
+                    <th scope="col">Edad<i (click)="ordenarPorEdad()" class="fas fa-sort"></i></th>
+                    <th scope="col">creadoEn</th>
+                    <th scope="col">foto</th>
+                    <th scope="col">foto2</th>
+                    <th scope="col">Acciones</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let alumno of lista_alumnos; 
+      index as i; first as isFirst">
+                    <th scope="row">{{alumno.id}}</th>
+                    <td>{{alumno.nombre}}</td>
+                    <td>{{alumno.apellido}}</td>
+                    <td><span *ngIf="alumno.edad == 23"><i class="fa fa-graduation-cap fa-1x"></i></span>{{alumno.edad}}
+                    </td>
+                    <td>{{alumno.creadoEn | date: 'shortDate'}}</td>
+                    <td>{{alumno.fotoHashCode}}</td>
+                    <td><img src="https://randomuser.me/api/portraits/thumb/men/{{alumno.id}}.jpg"></td>
+                    <td>
+                        <button (click)="borrarAlumno(alumno)" class=" btn-sm alert-danger"><i
+                                class=" fa-solid fa-solid fa-trash-can"></i></button>
+                        <button (click)="editarAlumno()" class=" btn-sm alert-success"><i
+                                class=" fa-solid fa-pen-to-square"></i></button>
+
+
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
