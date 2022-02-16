@@ -10,7 +10,12 @@
             <label class="form-check-label" for="actualizar">
               actualizar
             </label>
+
+          
+          
+
           </div>
+          <button routerLink ="/alumno/form" class="btn btn-primary btn-sm mt-1">crear alumnos</button>
 
         <table class="table table-striped">
             <thead>
@@ -40,14 +45,18 @@
                     </td>
                     <td>{{alumno.creadoEn | date: 'shortDate'}}</td>
                     <td>{{alumno.fotoHashCode}}</td>
-                    <td><img src="https://randomuser.me/api/portraits/thumb/men/{{alumno.id}}.jpg"></td>
+                    <td><img src="https://randomuser.me/api/portraits/thumb/men/{{alumno.id%100}}.jpg"></td>
                    
                     <td>
-                        <button (click)="borrarAlumno(alumno)" class=" btn-sm alert-danger"><i
-                                class=" fa-solid fa-solid fa-trash-can"></i></button>
-                        <button (click)="editarAlumno()" class=" btn-sm alert-success"><i
-                                class=" fa-solid fa-pen-to-square"></i></button>
 
+
+                        <button (click)="editarAlumno(alumno)" class=" btn-sm alert-success">
+                            <fa-icon [icon]="iconoEditar"></fa-icon>
+                            </button>
+
+                        <button (click)="borrarAlumno(alumno)" class=" btn-sm alert-danger">
+                        <fa-icon [icon]="iconoBasurita2"></fa-icon>
+                        </button>
 
                     </td>
                 </tr>

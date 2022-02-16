@@ -13,6 +13,8 @@ import { MenuSuperiorComponent } from './layout/menu-superior/menu-superior.comp
 import { JuegoPptComponent } from './components/juego-ppt/juego-ppt.component';
 import { Marcador3Component } from './components/marcador3/marcador3.component';
 import { AlumnoComponent } from './components/alumno/alumno.component';
+import { FormularioAlumnoComponent } from './components/formulario-alumno/formulario-alumno.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,15 @@ import { AlumnoComponent } from './components/alumno/alumno.component';
     ImcComponent,
     JuegoPptComponent,
     Marcador3Component,
-    AlumnoComponent
+    AlumnoComponent,
+    FormularioAlumnoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     LayoutModule, 
-    HttpClientModule
+    HttpClientModule, FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
