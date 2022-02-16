@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observer } from 'rxjs';
 
 import { Alumno } from 'src/app/models/alumno';
 import { AlumnoService } from 'src/app/services/alumno.service';
@@ -15,6 +16,7 @@ export class FormularioAlumnoComponent implements OnInit {
 
   alumno: Alumno;
   en_edicion:boolean;
+  observadorAlumno:Observer<Alumno> ;
 
   
 //inyecccion de dependenencias ?
@@ -22,8 +24,7 @@ export class FormularioAlumnoComponent implements OnInit {
     public servicio_alumnos: AlumnoService, 
     private router:Router,
     private ruta: ActivatedRoute
-    
-    ) {
+) {
    
     this.alumno = new Alumno();
     this.alumno.apellido = "Jones"
@@ -32,29 +33,40 @@ export class FormularioAlumnoComponent implements OnInit {
     this.alumno.email = "indiana@jones.us"
     this.en_edicion=true;
    
+   this.observadorAlumno=    this.observadorAlumno = 
+   {
+     complete: ()=>{console.log("Ha terminado");},
+     error:(merror)=>{console.error("ERRor "+merror);},
+     next: (alumno_nuevo)=>{
+      // alert('Alumno guardado correctamente :)');
+       console.log(alumno_nuevo.id);
+       //navegar
+       this.router.navigateByUrl("/alumno");//siempre usamos rutas relativas
+     },
+   };
+   
    
   }
 
   ngOnInit(): void {
 
-    let ruta_actual: string = location.href;
-  
-if (this.estoyEnEdicion(ruta_actual)){
-  this.en_edicion=true;
-  console.log ("estoy editando");
+    let ruta_actual: string = location.href;  
 
+if (this.estoyEnEdicion(ruta_actual)){
+  this.en_edicion=false;
+//
 
 }else{
-
-
+//estoy en 
+this.en_edicion=true;
+console.log ("estoy editando!");
+this.alumno=this.leerAlumnoDelLocalStorage();
 
 }
   // Juan, acceder a parametro de ruta sin subscribe
   // spapshot es la ruta actual
   //const id = this.ruta.snapshot.paramMap.get('id') || 0;
   
-
-
 // la forma de hacerlo con paramMap y un observable
 
     this.ruta.paramMap.subscribe(
@@ -72,6 +84,21 @@ if (this.estoyEnEdicion(ruta_actual)){
     )
 
   }
+
+
+leerAlumnoDelLocalStorage():Alumno{
+  let alumno_leido= new Alumno();
+  let alumno_string= localStorage.getItem("alumno_edicion")
+  if (alumno_string)
+  {
+    alumno_leido = JSON.parse(alumno_string)
+  }
+  return  alumno_leido;
+}
+
+
+
+
 
 
   estoyEnEdicion(ruta_actual:string):boolean{ 
@@ -97,29 +124,33 @@ return respuesta;
     //observable
     console.log("borrar alumno")
     this.servicio_alumnos.crearAlumno(this.alumno).subscribe(
-     //objeto observable con tres componente: complete, error ,next
-      {
-        complete: () => { console.log("ha terminado"); },
-        error: (error_r) => {
-          console.error('fallo' + error_r)
-       
-        },
-        next:(alumno_nuevo) => {
-          console.log("acciones finales");
-          console.log("Alumno insertado correctamente ");
-         // console.log(alumno_nuevo.id);
+      this.observadorAlumno
+    )
 
-        //  this.alumno=new Alumno(); 
-          this.router.navigateByUrl("alumno")
-        }
+  }
 
 
-      })
+  editarAlumno()
+  {
+    console.log('en editarAlumno()');
+
+    this.servicio_alumnos.editarAlumno(this.alumno).subscribe(
+      this.observadorAlumno
+    )
+
+  }
 
 
 
-
-
+estiloBoton():string{
+let estilos_boton: string ="";
+if (this.en_edicion){
+  estilos_boton ="btn btn-primary"
+}else{
+  estilos_boton ="btn btn-success"
+}
+return estilos_boton
+   
   }
 
 }

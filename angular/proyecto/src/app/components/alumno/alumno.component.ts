@@ -5,6 +5,7 @@ import { HttpResponse } from '@angular/common/http';
 import { faTrash, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faUserEdit } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observer } from 'rxjs';
 
 @Component({
   selector: 'app-alumno',
@@ -28,16 +29,18 @@ export class AlumnoComponent implements OnInit {
   iconoBasurita = faTrash;
   iconoBasurita2 = faTrashAlt;
   iconoEditar = faUserEdit;
+ 
 
 
 
   constructor(
-     public servicio_alumnos: AlumnoService,
-     private router: Router 
-    
-     ) {
+    public servicio_alumnos: AlumnoService,
+    private router: Router
 
-  
+
+  ) {
+
+
     this.lista_alumnos = new Array<Alumno>()
     this.automatico = true;
     this.intervalID = 0;
@@ -78,7 +81,7 @@ export class AlumnoComponent implements OnInit {
 
     //si el alumno ya esta borrado el servidor da un error
     //actualizamos la lista eliminando el alumno que no existe
-    
+
 
   }
 
@@ -102,9 +105,9 @@ export class AlumnoComponent implements OnInit {
           error: (error_r) => {
             console.error('fallo' + error_r)
             this.mostrarError(error_r);
-           
-           // no entiendo poruqe funciona
-            this.lista_alumnos =this.lista_alumnos.filter(al=> al.id!=alumno.id);
+
+            // no entiendo poruqe funciona
+            this.lista_alumnos = this.lista_alumnos.filter(al => al.id != alumno.id);
 
           },
           next: () => {
@@ -117,16 +120,16 @@ export class AlumnoComponent implements OnInit {
 
         })
 
-    } else { console.log("el usuario cancela el borrado")}
+    } else { console.log("el usuario cancela el borrado") }
   }
 
 
 
   editarAlumno(alumno: Alumno) {
-this.router.navigate(["/alumno/form",alumno.id]);
-
-    console.log("editar alumno" + alumno.id);
-
+    console.log("eeeeeeeeeeditar alumno: " + alumno.id);
+    localStorage.setItem("alumno_edicion", JSON.stringify(alumno));
+    this.router.navigate(["/alumno/form", alumno.id]);
+   
   }
 
 
@@ -155,14 +158,16 @@ this.router.navigate(["/alumno/form",alumno.id]);
   }
 
 
-
+ 
 
 
 
   obtenerAlumnos(): void {
 
+
     //es el sitio para tener datos de fuera
     this.servicio_alumnos.obtenerAlumnos().subscribe
+    
       (
         {
           complete: () => { console.log("acabó perfect"); },
@@ -172,6 +177,8 @@ this.router.navigate(["/alumno/form",alumno.id]);
           },
           next: listado_alumnos_rx => {
             this.lista_alumnos = listado_alumnos_rx;
+          
+
             this.lista_alumnos.forEach
               (alumno => { console.log(`Alumno ${alumno.id} ${alumno.nombre} `) });
           }
@@ -189,7 +196,7 @@ this.router.navigate(["/alumno/form",alumno.id]);
             console.error('fallo' + error_r)
             this.mostrarError(error_r);
 
-          //  this.lista_alumnos = this.lista_alumnos.filter(alum => alum.id != alumno.id);
+            //  this.lista_alumnos = this.lista_alumnos.filter(alum => alum.id != alumno.id);
 
           },
           next: http_rx => {

@@ -1,6 +1,8 @@
 
+cambiar la funcion
 
-<form #formulario_alumno="ngForm" (ngSubmit)="crearAlumno()">
+<!-- <form #formulario_alumno="ngForm" (ngSubmit)="crearAlumno()"> -->
+<form #formulario_alumno="ngForm" (ngSubmit)="en_edicion ? editarAlumno() : crearAlumno()">
     <div class="form-group">
       <label for="nombre">Nombre</label>
       <input type="text" name="nombre" [(ngModel)]="alumno.nombre"  #nombre="ngModel" class="form-control" id="nombre" placeholder="nombre del alumno" required pattern=".{3,15}" >
@@ -36,7 +38,25 @@
 
       <br>
       <div class="form-group">
-        <button type="submit" [disabled] ="!formulario_alumno.valid" class="btn btn-primary">ENVIAR</button>
+      
+       
+        <button type="submit" [disabled] ="!formulario_alumno.valid" class="btn btn-primary">
+          <span *ngIf="this.en_edicion == true ; else elseBlock">ACTUALIZAR1</span>
+          <ng-template #elseBlock>CREAR1</ng-template>
+        </button>
       </div>  
+<br>
+
+      <div *ngIf="en_edicion">
+        <button type="submit" [class]="estiloBoton()">Actualizar2</button>
+      </div>
+      <div *ngIf="!en_edicion">
+        <button type="submit" [class]="estiloBoton()">Crear2</button>
+      </div>
+
+<br>
+      <button type="submit" class="btn btn-primary">
+      {{(en_edicion?"Actualizar3":"Crear3")}}
+      </button>
       
   </form>

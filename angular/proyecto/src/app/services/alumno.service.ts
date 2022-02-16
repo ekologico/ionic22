@@ -15,6 +15,7 @@ ruta_servidor: string= RUTA_SERVIDOR_CLASE;
 HttpHeaders = new HttpHeaders({'Content-type': 'application/json'});
 cabeceras: HttpHeaders = new HttpHeaders({'Content-type': 'application/json'});
 
+
   //inyección de dependencias
   //el objeto http que es del la clase HttpClient
   /* la idea es la independencia sobre 
@@ -22,7 +23,7 @@ cabeceras: HttpHeaders = new HttpHeaders({'Content-type': 'application/json'});
 
   */
   constructor(private http:HttpClient) {   
-
+ 
     //crearAlumno
     //leerAlumno
     //modificarAlumno
@@ -54,6 +55,22 @@ crearAlumno (alumno:Alumno):Observable<Alumno>
 }
 
 
+public editarAlumno (alumno:Alumno):Observable<Alumno>
+{
+  // devuelve el resultado del post alumno 
+ // http://10.1.2.10:3000/swagger-ui/index.html
+ //AlumnoService.URL_SERVIDOR
+ 
+  //actualizar
+  console.log("observable editar")
+    return this.http.put<Alumno>(this.ruta_servidor+alumno.id, alumno, { headers: this.cabeceras });
+  }
 
+
+  // mio mal
+ // return this.http.put<Alumno>(this.ruta_servidor,alumno, {headers: this.cabeceras});
 
 }
+
+
+
