@@ -15,6 +15,7 @@ import { Marcador3Component } from './components/marcador3/marcador3.component';
 import { AlumnoComponent } from './components/alumno/alumno.component';
 import { FormularioAlumnoComponent } from './components/formulario-alumno/formulario-alumno.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PruebasPalabrosComponent } from './components/pruebas-palabros/pruebas-palabros.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     JuegoPptComponent,
     Marcador3Component,
     AlumnoComponent,
-    FormularioAlumnoComponent
+    FormularioAlumnoComponent,
+    PruebasPalabrosComponent
   ],
   imports: [
     BrowserModule,
