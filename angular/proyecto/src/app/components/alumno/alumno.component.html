@@ -45,8 +45,13 @@
                     </td>
                     <td>{{alumno.creadoEn | date: 'shortDate'}}</td>
                     <td>{{alumno.fotoHashCode}}</td>
-                    <td><img src="https://randomuser.me/api/portraits/thumb/men/{{alumno.id%100}}.jpg"></td>
-                   
+                    <td>
+                        <img *ngIf="!alumno.fotoHashCode" class= "col-12" src="https://randomuser.me/api/portraits/men/{{alumno.id%100}}.jpg" alt="Card image cap" >
+                       
+                        <img *ngIf="alumno.fotoHashCode" class="col-12" src="http://10.1.2.10:3000/alumno/obtenerfoto/{{alumno.id}}" alt="Card image cap">
+
+                      <!--   <img *ngIf !="alumo.fotoHashCode" src="https://randomuser.me/api/portraits/thumb/men/{{alumno.id%100}}.jpg"></td>
+                      <img *ngIf !="alumo.fotoHashCode" src=""></td> -->
                     <td>
 
 

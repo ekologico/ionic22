@@ -55,6 +55,22 @@ crearAlumno (alumno:Alumno):Observable<Alumno>
 }
 
 
+crearAlumnoConFoto (alumno:Alumno, archivo:File):Observable<Alumno>
+//en el cuerpo vaija el alumno y el fichero
+{
+let formData = new FormData();
+
+  formData.append('nombre', alumno.nombre);
+  formData.append('apellido', alumno.apellido);
+  formData.append('edad', alumno.edad+'');
+  formData.append('email', alumno.email);
+  formData.append('archivo', archivo);
+
+  return this.http.post<Alumno>(this.ruta_servidor+"crear-con-foto",formData);
+
+}
+
+
 public editarAlumno (alumno:Alumno):Observable<Alumno>
 {
   // devuelve el resultado del post alumno 
@@ -70,7 +86,31 @@ public editarAlumno (alumno:Alumno):Observable<Alumno>
   // mio mal
  // return this.http.put<Alumno>(this.ruta_servidor,alumno, {headers: this.cabeceras});
 
+
+
+
+
+
+ editarAlumnoConFoto (alumno:Alumno, archivo:File):Observable<Alumno>
+ //en el cuerpo vaija el alumno y el fichero
+ {
+ let formData = new FormData();
+
+   formData.append('nombre', alumno.nombre);
+   formData.append('apellido', alumno.apellido);
+   formData.append('edad', alumno.edad+'');
+   formData.append('email', alumno.email);
+   formData.append('archivo', archivo);
+
+   return this.http.put<Alumno>(this.ruta_servidor+"editar-con-foto/"+alumno.id,formData);
+
+ }
+
+
+ 
 }
+
+
 
 
 
