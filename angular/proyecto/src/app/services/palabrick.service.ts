@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RUTA_SERVIDOR_CLASE } from '../config/app';
-import { Alumno } from '../models/alumno';
+//import { Alumno } from '../models/alumno';
 
 
 

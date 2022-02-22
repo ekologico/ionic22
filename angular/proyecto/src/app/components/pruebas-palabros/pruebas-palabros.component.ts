@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PalabrickService } from 'src/app/services/palabrick.service.spec';
+import { PalabrickService } from '../../services/palabrick.service';
+
 
 @Component({
   selector: 'app-pruebas-palabros',
@@ -75,7 +76,7 @@ export class PruebasPalabrosComponent implements OnInit {
     */
 
 
-
+/*
     this.servicio_palabrick.guardarDatos().subscribe
 
       (
@@ -91,7 +92,7 @@ export class PruebasPalabrosComponent implements OnInit {
           }
         }
       );
-
+*/
 
 
 
@@ -103,7 +104,11 @@ export class PruebasPalabrosComponent implements OnInit {
 
   obtenerEstadistica() {
     let respuesta: Array<number>;
+    //simulado
     respuesta = this.test_array_datos_vueltas;
+
+    //el servicio
+    
 
     return respuesta
   }
