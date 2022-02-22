@@ -8,20 +8,21 @@ import { PalabrickService } from 'src/app/services/palabrick.service.spec';
 })
 export class PruebasPalabrosComponent implements OnInit {
 
-  
-  array_vueltas: Array<number>;
-  /*
-  observadorEstadisticas: Observer<Array>;
-*/
+  test_array_datos_vueltas: Array<number>;
+  test_resultado: number;
+  // observadorEstadisticas: Observer<Array>;
 
 
 
+  constructor() {
+    //public servicio_palabrick: PalabrickService;
+    this.test_array_datos_vueltas = [2, 3, 4, 5, 6, 6, 6];
+    this.test_resultado = 1;
+    this.guardarLaPartida(this.test_resultado)
 
-  constructor() { 
 
-    this.array_vueltas= [2,3,4,5,6,6,6];
-/*
-
+    // observador para acortar código:
+    /*
     this.observadorEstadisticas = this.observadorEstadisticas =
     {
       complete: () => { console.log("Ha terminado"); },
@@ -33,35 +34,78 @@ export class PruebasPalabrosComponent implements OnInit {
         this.router.navigateByUrl("/alumno");//siempre usamos rutas relativas
       },
     };
-
-
-
 */
+
   }
 
   ngOnInit(): void {
   }
 
 
-// arrayVueltas
+  // arrayVueltas
 
-guardarLaPartida(array_vueltas=this.array_vueltas){  
- // guardarLaPartida(array_vueltas=this.array_vueltas){  
-//llamar servicio guardar partida 
+  guardarLaPartida(resultado: number) {
+    //obtenemos array
+    let array_datos: Array<number> | null;
+    array_datos = this.obtenerEstadistica();
 
-/* recibe array con las veces acertadas en 1,2,3,4,5,6 o 0 
-que son las erradas
-*/
+      //sumamos
+    if (array_datos != null) {
+   
+    
+      let aux:number = array_datos[resultado];
+      array_datos[resultado]= aux+1;
+    } else {
+      //primera partida
+      array_datos= new Array;  
+      array_datos[resultado]=1;
+     }
+
+
+    //guardamos
+
+
+
+    // guardarLaPartida(array_vueltas=this.array_vueltas){  
+    //llamar servicio guardar partida 
+
+    /* recibe array con las veces acertadas en 1,2,3,4,5,6 o 0 
+    que son las erradas
+    */
+
+
+
+    this.servicio_palabrick.guardarDatos().subscribe
+
+      (
+        {
+          complete: () => { console.log("acabó perfect"); },
+          error: (error_r) => {
+            console.error('fallo' + error_r)
+            this.mostrarError(error_r);
+          },
+          next: array_datos_rx => {
+            let array_datos = array_datos_rx;
+            array_datos.forEach(dato => console.log(dato));
+          }
+        }
+      );
 
 
 
 
 
 
-}
+  }
 
-obtenerLaPartida(){
-}
+
+
+  obtenerEstadistica() {
+    let respuesta: Array<number>;
+    respuesta = this.test_array_datos_vueltas;
+
+    return respuesta
+  }
 
 
 

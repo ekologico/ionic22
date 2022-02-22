@@ -1,0 +1,42 @@
+<!-- interpolación: el dato se obtiene del C -->
+<!-- <button type="button" class="btn btn-primary">
+    Notifications <span class="badge bg-secondary">4</span>
+  </button> -->
+  <ion-list>
+    <ion-radio-group #radio value="0">
+      <ion-list-header>
+        <ion-label>Elija su letra</ion-label>
+      </ion-list-header>
+      
+      <ion-item>
+        <ion-label>Sin letra</ion-label>
+        <ion-radio slot="start" value="0" ></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>X</ion-label>
+        <ion-radio slot="start" value="00"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Y</ion-label>
+        <ion-radio slot="start" value="1"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Z</ion-label>
+        <ion-radio slot="start" value="2"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-item>
+    <ion-label position="floating">Introduzca su dni</ion-label>
+    <ion-input #dni></ion-input>
+  </ion-item>
+  <ion-button (click)="calculaLetraDni()" class="ion-activatable ripple-parent">
+    CALCULAR LETRA
+    <ion-icon slot="icon-only" name="body-outline"></ion-icon>
+    <ion-ripple-effect></ion-ripple-effect>
+  </ion-button>
+  
