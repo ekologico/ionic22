@@ -14,10 +14,11 @@ export class PruebasPalabrosComponent implements OnInit {
 
 
 
-  constructor() {
+  constructor(public servicio_palabrick: PalabrickService) {
     //public servicio_palabrick: PalabrickService;
     this.test_array_datos_vueltas = [2, 3, 4, 5, 6, 6, 6];
     this.test_resultado = 1;
+    this.servicio_palabrick.guardarDatos
     this.guardarLaPartida(this.test_resultado)
 
 
