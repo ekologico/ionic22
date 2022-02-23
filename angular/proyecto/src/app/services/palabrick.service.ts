@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DatoEstadistica } from '../models/datoEstadistica';
 
 
 
@@ -23,8 +24,8 @@ export class PalabrickService {
    }
 
 
-   obtenerDatos():Array<number> | null{
-    let array_resultado2: Array<number> | null ;
+   obtenerDatos():Array<DatoEstadistica> | null{
+    let array_resultado2: Array<DatoEstadistica> | null ;
     let array_resultado: string | null = localStorage.getItem('palabrick_resultados')
     if (array_resultado != null) {
   
@@ -36,7 +37,7 @@ export class PalabrickService {
    }
 
 
-   guardarDatos(array_datos:Array<number>):void{
+   guardarDatos(array_datos:Array<DatoEstadistica>):void{
     localStorage.setItem('palabrick_resultados', JSON.stringify(array_datos));
     console.log("->guardado")
     console.log(JSON.stringify(array_datos));

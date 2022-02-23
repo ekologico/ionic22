@@ -1,8 +1,12 @@
 <h1>Prueba palabro on the records</h1>
 
 <ul>
-<li> Test_array_datos_vueltas: {{test_array_datos_vueltas}}</li>
-<li> test_resultado: {{test_resultado}}</li>
+    <li *ngFor="let item of test_array_datos_vueltas">
+       Fecha: {{ item.fecha }}  Resultado: {{ item.resultado }}
+      </li>
+
+
+<li> <strong>test_resultado: {{test_resultado}}</strong></li>
 </ul>
 
 <h2>Estadísticas</h2>
