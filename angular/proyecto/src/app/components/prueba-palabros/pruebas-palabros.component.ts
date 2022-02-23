@@ -19,8 +19,10 @@ export class PruebasPalabrosComponent implements OnInit {
     //public servicio_palabrick: PalabrickService;
     this.test_array_datos_vueltas = [2, 3, 4, 5, 6, 6, 6];
     this.test_resultado = 1;
-    this.servicio_palabrick.guardarDatos
-    this.guardarLaPartida(this.test_resultado)
+    //public servicio_alumnos: PalabrickService,
+   // this.servicio_palabrick.guardarDatos;
+    this.guardarEstadistica(this.test_resultado);
+    this.mostrarEstadisticas();
 
 
     // observador para acortar código:
@@ -46,7 +48,7 @@ export class PruebasPalabrosComponent implements OnInit {
 
   // arrayVueltas
 
-  guardarLaPartida(resultado: number) {
+  guardarEstadistica(resultado: number) {
     //obtenemos array
     let array_datos: Array<number> | null;
     array_datos = this.obtenerEstadistica();
@@ -65,37 +67,16 @@ export class PruebasPalabrosComponent implements OnInit {
 
 
     //guardamos
+  this.servicio_palabrick.guardarDatos(array_datos);
 
-
-
-    // guardarLaPartida(array_vueltas=this.array_vueltas){  
+   // guardarLaPartida(array_vueltas=this.array_vueltas){  
     //llamar servicio guardar partida 
 
     /* recibe array con las veces acertadas en 1,2,3,4,5,6 o 0 
     que son las erradas
     */
 
-
-/*
-    this.servicio_palabrick.guardarDatos().subscribe
-
-      (
-        {
-          complete: () => { console.log("acabó perfect"); },
-          error: (error_r) => {
-            console.error('fallo' + error_r)
-            this.mostrarError(error_r);
-          },
-          next: array_datos_rx => {
-            let array_datos = array_datos_rx;
-            array_datos.forEach(dato => console.log(dato));
-          }
-        }
-      );
-*/
-
-
-
+  
 
 
   }
@@ -112,6 +93,19 @@ export class PruebasPalabrosComponent implements OnInit {
 
     return respuesta
   }
+
+
+
+mostrarEstadisticas (){
+
+console.log("--mostrarEstadisticas");
+let datos_estadisticas = this.obtenerEstadistica();
+console.log(datos_estadisticas);
+
+
+}
+
+
 
 
 

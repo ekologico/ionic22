@@ -9,7 +9,7 @@ import { DniComponent } from './components/dni/dni.component';
 import { FormularioAlumnoComponent } from './components/formulario-alumno/formulario-alumno.component';
 import { ImcComponent } from './components/imc/imc.component';
 import { JuegoPptComponent } from './components/juego-ppt/juego-ppt.component';
-import { PruebasPalabrosComponent } from './components/pruebas-palabros/pruebas-palabros.component';
+import { PruebasPalabrosComponent } from './components/prueba-palabros/pruebas-palabros.component';
 
 
 // aqui se establece la correspondencia entre ruta y componente

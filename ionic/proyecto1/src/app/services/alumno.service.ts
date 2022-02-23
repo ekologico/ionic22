@@ -4,9 +4,11 @@ import { Observable } from 'rxjs';
 import { RUTA_JSON_SERVER, RUTA_SERVIDOR_CLASE } from '../config/app';
 import { Alumno } from '../models/alumno';
 
-/*esto es un servicio
+/*
+Esto es un servicio
 que va a llevar la comunición HTTP
-con el servidor*/
+con el servidor
+*/
 
 @Injectable({
   providedIn: 'root'
