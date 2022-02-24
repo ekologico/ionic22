@@ -4,6 +4,7 @@
 */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AlumnoPagComponent } from './components/alumno-pag/alumno-pag.component';
 import { AlumnoComponent } from './components/alumno/alumno.component';
 import { DniComponent } from './components/dni/dni.component';
 import { FormularioAlumnoComponent } from './components/formulario-alumno/formulario-alumno.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:"ppt", component: JuegoPptComponent},
   {path:"", component: ImcComponent},
   {path:"alumno", component: AlumnoComponent},
+  {path:"alumnoPag", component: AlumnoPagComponent},
   {path:"alumno/form", component: FormularioAlumnoComponent}, //crear
   {path:"alumno/form/:id", component: FormularioAlumnoComponent}, //modificar
   {path:"pruebas/prueba_palabro", component: PruebasPalabrosComponent} //modificar

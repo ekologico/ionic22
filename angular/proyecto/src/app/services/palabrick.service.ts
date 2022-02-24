@@ -27,12 +27,13 @@ export class PalabrickService {
    obtenerDatos():Array<DatoEstadistica> | null{
     let array_resultado2: Array<DatoEstadistica> | null ;
     let array_resultado: string | null = localStorage.getItem('palabrick_resultados')
+    
     if (array_resultado != null) {
-  
-      array_resultado2 = JSON.parse(array_resultado);
+     array_resultado2 = JSON.parse(array_resultado);
     }else{
       array_resultado2=null;
     }
+    
     return array_resultado2;
    }
 

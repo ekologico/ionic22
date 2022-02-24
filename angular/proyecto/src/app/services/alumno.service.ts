@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RUTA_SERVIDOR_CLASE } from '../config/app';
@@ -34,6 +34,21 @@ cabeceras: HttpHeaders = new HttpHeaders({'Content-type': 'application/json'});
 obtenerAlumnos():Observable<Array<Alumno>>{
  return this.http.get<Array<Alumno>>(this.ruta_servidor)
 }
+
+
+obtenerAlumnosPorPaginas(pagina:number, size:number):Observable<any>
+{
+   let parametros : HttpParams = new HttpParams().set('page', pagina).set('size', size);
+   return this.http.get<any>(this.ruta_servidor+"pagina", {params:parametros}); 
+   //return this.http.get<Alumno[]>("http://10.1.2.10:8090/api/alumnos"); 
+}
+
+/*
+obtenerAlumnosPorPaginasMio(pagina:number, size: number):Observable<any>{
+  let parametros: HttpParams = new HttpParams().set('page', pagina).set('size', size)
+  return this.http.get<any>(this.ruta_servidor+"pagina", {params: parametros});
+ }
+ */
 
 
 // 
@@ -106,10 +121,8 @@ public editarAlumno (alumno:Alumno):Observable<Alumno>
 
  }
 
-
  
 }
-
 
 
 

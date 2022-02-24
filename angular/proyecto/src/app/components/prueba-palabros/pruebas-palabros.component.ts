@@ -10,113 +10,179 @@ import { PalabrickService } from '../../services/palabrick.service';
 })
 export class PruebasPalabrosComponent implements OnInit {
 
-  test_array_datos_vueltas: Array<DatoEstadistica>;
-  test_resultado: number;
-  // observadorEstadisticas: Observer<Array>;
+  test_array_datos_vueltas: Array<DatoEstadistica> |null;
+  test_resultado: DatoEstadistica | null;
+
 
 
 
   constructor(public servicio_palabrick: PalabrickService) {
-    //public servicio_palabrick: PalabrickService;
-    this.test_array_datos_vueltas = [
-      {
-        "fecha":new Date("December 17, 2022 03:24:00"),
-        "resultado":2
-     },
-     {
-      "fecha":new Date("December 17, 2022 04:24:00"),
-      "resultado":5
-   },
-   {
-    "fecha":new Date("December 18, 2022 03:24:00"),
-    "resultado":4
- }
-    ]
 
-    this.test_resultado = 1;
-    //public servicio_alumnos: PalabrickService,
-   // this.servicio_palabrick.guardarDatos;
-    this.guardarEstadistica(this.test_resultado);
+    this.test_array_datos_vueltas = null;
+    this.test_resultado = null;
     this.mostrarEstadisticas();
-
-
-    // observador para acortar código:
-    /*
-    this.observadorEstadisticas = this.observadorEstadisticas =
-    {
-      complete: () => { console.log("Ha terminado"); },
-      error: (merror) => { console.error("ERRor " + merror); },
-      next: (alumno_nuevo) => {
-    
-        console.log(alumno_nuevo.id);
-        //navegar
-        this.router.navigateByUrl("/alumno");//siempre usamos rutas relativas
-      },
-    };
-*/
-
   }
 
   ngOnInit(): void {
+    this.test_array_datos_vueltas = this.testDatosInicio();
+    this.test_resultado= this.testDatoResultado();
+    this.guardarEstadistica(this.test_resultado);
   }
 
 
   // arrayVueltas
 
-  guardarEstadistica(resultado: number) {
+  guardarEstadistica(resultado: DatoEstadistica) {
+
     //obtenemos array
     let array_datos: Array<DatoEstadistica> | null;
     array_datos = this.obtenerEstadistica();
-    let dato:DatoEstadistica={fecha: new Date(), "resultado": resultado}
-      //sumamos
-    if (array_datos == null) {      
-      array_datos= new Array;  
+    let dato: DatoEstadistica = this.testDatoResultado()
+    //sumamos
+    if (array_datos == null) {
+      array_datos = new Array;
       // let aux:number = array_datos[resultado];
-     //array_datos[resultado]= aux+1;
+      //array_datos[resultado]= aux+1;
     } else {
       //primera partida      
       //array_datos[resultado]=1;
-     }
-     array_datos.push(dato); 
+    }
+    array_datos.push(dato);
 
     //guardamos
-  this.servicio_palabrick.guardarDatos(array_datos);
+    this.servicio_palabrick.guardarDatos(array_datos);
 
-   // guardarLaPartida(array_vueltas=this.array_vueltas){  
+    // guardarLaPartida(array_vueltas=this.array_vueltas){  
     //llamar servicio guardar partida 
 
     /* recibe array con las veces acertadas en 1,2,3,4,5,6 o 0 
     que son las erradas
     */
 
-  
 
+   
 
   }
 
 
 
-  obtenerEstadistica() {
-    let respuesta: Array<DatoEstadistica>;
+  obtenerEstadistica(): Array<DatoEstadistica> | null{
+    let respuesta: Array<DatoEstadistica>|null;
+  
     //simulado
-    respuesta = this.test_array_datos_vueltas;
+
+    respuesta = this.servicio_palabrick.obtenerDatos();
+   // respuesta = this.testDatosInicio();
 
     //el servicio
-    
 
-    return respuesta
+
+    return respuesta;
   }
 
 
 
-mostrarEstadisticas (){
+  mostrarEstadisticas() {
 
-console.log("--mostrarEstadisticas");
-let datos_estadisticas = this.obtenerEstadistica();
-console.log(datos_estadisticas);
+    console.log("--mostrarEstadisticas");
+    let datos_estadisticas = this.obtenerEstadistica();
+    console.log(datos_estadisticas);
 
 
+  }
+
+
+testDatoResultado():DatoEstadistica{
+
+  let devuelve:DatoEstadistica= 
+  {
+        "resultado": "2",
+        "fecha_inicio": 1645703575,
+        "fecha_fin": 1645703592,
+        "intentos": [
+            {
+                "palabra": "HELIO",
+                "letra1": 1,
+                "letra2": -1,
+                "letra3": 0,
+                "letra4": 0,
+                "letra5": 1
+            },
+            {
+                "palabra": "HUEVO",
+                "letra1": 1,
+                "letra2": 1,
+                "letra3": 1,
+                "letra4": 1,
+                "letra5": 1
+            }
+        ]
+    }
+
+    return devuelve;
 }
+
+
+  testDatosInicio(): Array<DatoEstadistica> {
+    
+    /*
+    let boleo= Math.floor(Math.random() * 10)+1;
+    let boleo2= Math.floor(Math.random() * 10)+10;
+    let boleo3= Math.floor(Math.random() * 10)+20;
+*/
+    
+    let test_array_datos_vueltas: Array<DatoEstadistica> = [
+      {
+        "resultado": "2",
+        "fecha_inicio": 1645703575,
+        "fecha_fin": 1645703592,
+        "intentos": [
+            {
+                "palabra": "HELIO",
+                "letra1": 1,
+                "letra2": -1,
+                "letra3": 0,
+                "letra4": 0,
+                "letra5": 1
+            },
+            {
+                "palabra": "HUEVO",
+                "letra1": 1,
+                "letra2": 1,
+                "letra3": 1,
+                "letra4": 1,
+                "letra5": 1
+            }
+        ]
+    },
+    {
+      "resultado": "4",
+      "fecha_inicio": 1645703576,
+      "fecha_fin": 1645703593,
+      "intentos": [
+          {
+              "palabra": "HELIO",
+              "letra1": 1,
+              "letra2": -1,
+              "letra3": 0,
+              "letra4": 0,
+              "letra5": 1
+          },
+          {
+              "palabra": "HUEVO",
+              "letra1": 1,
+              "letra2": 1,
+              "letra3": 1,
+              "letra4": 1,
+              "letra5": 1
+          }
+      ]
+  }
+    ]
+
+    return test_array_datos_vueltas;
+  }
+
 
 
 

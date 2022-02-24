@@ -16,6 +16,9 @@ import { AlumnoComponent } from './components/alumno/alumno.component';
 import { FormularioAlumnoComponent } from './components/formulario-alumno/formulario-alumno.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PruebasPalabrosComponent } from './components/prueba-palabros/pruebas-palabros.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlumnoPagComponent } from './components/alumno-pag/alumno-pag.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -26,14 +29,16 @@ import { PruebasPalabrosComponent } from './components/prueba-palabros/pruebas-p
     Marcador3Component,
     AlumnoComponent,
     FormularioAlumnoComponent,
-    PruebasPalabrosComponent
+    PruebasPalabrosComponent,
+    AlumnoPagComponent
   ],
   imports: [
     BrowserModule,
+    MatPaginatorModule,
     AppRoutingModule,
     FormsModule,
     LayoutModule, 
-    HttpClientModule, FontAwesomeModule
+    HttpClientModule, FontAwesomeModule, BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

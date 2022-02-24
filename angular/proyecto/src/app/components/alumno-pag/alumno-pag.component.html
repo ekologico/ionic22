@@ -1,0 +1,29 @@
+<h1 class="text-center">Lista de alumnos</h1>
+<button class="btn btn-primary btn-sm" routerLink="/alumno/form">CREAR ALUMNO</button>
+<div class='listaAlumnos'>
+  
+  <div class="" *ngFor="let alumno of lista_alumnos">
+    <!--<img class="card-img-top" src="..." alt="Card image cap">
+        si no tiene foto, le pongo una de randomuser
+      si tiene foto, la pillo del servidor-->
+    
+      <img *ngIf="!alumno.fotoHashCode" class="card-img-top"
+      src="https://randomuser.me/api/portraits/men/{{alumno.id%100}}.jpg" alt="Card image cap">
+      <img *ngIf="alumno.fotoHashCode" class="card-img-top"
+      src="http://10.1.2.10:3000/alumno/obtenerfoto/{{alumno.id}}?fotoid={{alumno.fotoHashCode}}" alt="Card image cap">
+    
+      <div class="">
+      <p class="">{{alumno.id}}. {{alumno.nombre}} {{alumno.apellido}}</p>
+    </div>
+
+
+  </div>
+<hr>
+  <mat-paginator #mipaginador [length]="totalRegistros" [pageSize]="totalPorPagina"
+    [pageSizeOptions]="opcionesTamanoPagina" aria-label="Select page" showFirstLastButtons (page)="paginar($event)">
+  </mat-paginator>
+
+</div>
+
+
+

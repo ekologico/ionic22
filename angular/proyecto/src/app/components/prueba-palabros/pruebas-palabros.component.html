@@ -2,7 +2,7 @@
 
 <ul>
     <li *ngFor="let item of test_array_datos_vueltas">
-       Fecha: {{ item.fecha }}  Resultado: {{ item.resultado }}
+       Fecha: {{ item.fecha_inicio }}  Resultado: {{ item.resultado }}
       </li>
 
 
@@ -13,6 +13,9 @@
 
 <ul>
     <li *ngFor="let item of test_array_datos_vueltas; index as i">
-       {{i}} <span class="bloque_porcentaje" *ngFor="let e of [].constructor(item); let i = index">{{i+1}}</span>
+       {{i}} 
+       <span class="bloque_porcentaje" 
+            *ngFor="let e of [].constructor(item); let i = index">{{i+1}}
+        </span>
     </li>
 </ul>
