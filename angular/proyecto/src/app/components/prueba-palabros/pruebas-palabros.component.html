@@ -1,7 +1,7 @@
 <h1>Prueba palabro on the records</h1>
 
 <ul>
-    <li *ngFor="let item of test_array_datos_vueltas">
+    <li *ngFor="let item of historico_array_datos_bruto">
        Fecha: {{ item.fecha_inicio }}  Resultado: {{ item.resultado }}
       </li>
 
@@ -12,7 +12,7 @@
 <h2>Estadísticas</h2>
 
 <ul>
-    <li *ngFor="let item of test_array_datos_vueltas; index as i">
+    <li *ngFor="let item of historico_array_datos_bruto; index as i">
        {{i}} 
        <span class="bloque_porcentaje" 
             *ngFor="let e of [].constructor(item); let i = index">{{i+1}}
