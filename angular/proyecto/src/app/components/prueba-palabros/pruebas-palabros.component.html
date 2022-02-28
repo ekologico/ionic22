@@ -1,26 +1,45 @@
 <h1>Prueba palabro on the records</h1>
 
+<h3 *ngIf="input_partida">
+    Resultado
+    {{input_partida.resultado}}</h3>
 
-<h2>Estadísticas</h2>
-<h3>Partidas totales {{historico_partidas_totales}}</h3>
-<h3>porcentaje acierto</h3>
-<ul>
-    <li *ngFor="let item of historico_array_seis_rondas_y_errores; index as i">
-        {{i}}
+<h2 class="text-center">Estadísticas</h2>
+<div class="row">
+    <div class="col-6 text-center">
+        <h3 class="display-1 col-12">{{historico_partidas_totales}}</h3>
+        <span class="display-7">Jugadas</span>
+    </div>
 
-        <span class="bloque_porcentaje" *ngFor="let item of [].constructor(item); let i = index">{{i}}</span>
-        {{item}}
+    <div class="col-6 text-center">
+        <h3 class="display-1 col-12">{{historico_porcentaje_aciertos}}%</h3>
+        <span class="display-7">Victorias</span>
+    </div>
+</div>
+<hr>
+<h3 class="text-center">DISTRIBUCIÓN DE RESULTADOS</h3>
+
+
+<div class="col-12 ">
+<ul class="distribucion_resultados">
+    <li *ngFor="let item of historico_array_seis_rondas_y_errores_porcentajes | slice:1 ; index as i">
+        {{i+1}}:
+        <span class="bloque_porcentaje" *ngFor="let item of [].constructor(item); let i = index"></span>
+        <span class="">({{item*10}}%)</span>
     </li>
+    <li>X: <span class="bloque_porcentaje historico_error_estadisticas"
+            *ngFor="let item of [].constructor(historico_array_seis_rondas_y_errores_porcentajes[0]); let i = index"></span>
+        ({{historico_array_seis_rondas_y_errores_porcentajes[0]*10}}%)</li>
 </ul>
+</div>
 
 
 
+<!-- 
 <ul>
     <li> <strong>test_resultado: {{test_resultado}}</strong></li>
     <li *ngFor="let item of historico_array_datos_bruto">
         Fecha: {{ item.fecha_inicio }} Resultado: {{ item.resultado }}
     </li>
-
-
-
 </ul>
+-->

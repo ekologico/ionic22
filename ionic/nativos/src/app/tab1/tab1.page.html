@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      TAB 1
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+
+  <div id="container">
+    <ion-list>
+      <ion-radio-group #radio value="0" >
+        <ion-list-header>
+          <ion-label>
+            ESTADO DE SU CONEXIÓN A INTERNET
+          </ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>SIN CONEXIÓN</ion-label>
+          <ion-radio value="none"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>CON WIFI</ion-label>
+          <ion-radio value="wifi"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>CON DATOS</ion-label>
+          <ion-radio value="cellular"></ion-radio>
+        </ion-item>
+    
+      </ion-radio-group>
+    </ion-list>
+  </div>
+</ion-content>
