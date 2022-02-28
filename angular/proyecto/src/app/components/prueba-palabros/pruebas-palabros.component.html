@@ -1,21 +1,26 @@
 <h1>Prueba palabro on the records</h1>
 
-<ul>
-    <li *ngFor="let item of historico_array_datos_bruto">
-       Fecha: {{ item.fecha_inicio }}  Resultado: {{ item.resultado }}
-      </li>
-
-
-<li> <strong>test_resultado: {{test_resultado}}</strong></li>
-</ul>
 
 <h2>Estadísticas</h2>
+<h3>Partidas totales {{historico_partidas_totales}}</h3>
+<h3>porcentaje acierto</h3>
+<ul>
+    <li *ngFor="let item of historico_array_seis_rondas_y_errores; index as i">
+        {{i}}
+
+        <span class="bloque_porcentaje" *ngFor="let item of [].constructor(item); let i = index">{{i}}</span>
+        {{item}}
+    </li>
+</ul>
+
+
 
 <ul>
-    <li *ngFor="let item of historico_array_datos_bruto; index as i">
-       {{i}} 
-       <span class="bloque_porcentaje" 
-            *ngFor="let e of [].constructor(item); let i = index">{{i+1}}
-        </span>
+    <li> <strong>test_resultado: {{test_resultado}}</strong></li>
+    <li *ngFor="let item of historico_array_datos_bruto">
+        Fecha: {{ item.fecha_inicio }} Resultado: {{ item.resultado }}
     </li>
+
+
+
 </ul>

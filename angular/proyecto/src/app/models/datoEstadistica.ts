@@ -1,5 +1,5 @@
 export class DatoEstadistica {
-    resultado:	string | null;
+    resultado:	number | null;
     fecha_inicio: Date | number |null;
     fecha_fin: Date | number | null;
     intentos: Array<any>;

@@ -20,22 +20,23 @@ export class PruebasPalabrosComponent implements OnInit {
   variables de estadistica historico
   */
   historico_array_datos_bruto: Array<DatoEstadistica> | null;
-  historico_partidas_totales: number | null;
-  historico_array_seis_rondas_y_errores: Array<string>;
-
-  historico_ronda_uno_aciertos: number | null;
-  historico_ronda_dos_aciertos: number | null;
-  historico_ronda_tres_aciertos: number | null;
-  historico_ronda_cuatro_aciertos: number | null;
-  historico_ronda_cinco_aciertos: number | null;
-  historico_ronda_seis_aciertos: number | null;
-
-  historico_fallos: number | null;
-
+  //historico_partidas_totales: number | null;
+  historico_array_seis_rondas_y_errores: Array<number>;
+  historico_array_seis_rondas_y_errores_porcentajes: Array<number>;
+  historico_partidas_totales: number;
+  /*
+    historico_ronda_uno_aciertos: number | null;
+    historico_ronda_dos_aciertos: number | null;
+    historico_ronda_tres_aciertos: number | null;
+    historico_ronda_cuatro_aciertos: number | null;
+    historico_ronda_cinco_aciertos: number | null;
+    historico_ronda_seis_aciertos: number | null;
+    historico_fallos: number | null;
+  */
 
 
   constructor(public servicio_palabrick: PalabrickService) {
-
+    this.historico_partidas_totales = 0;
     this.historico_array_datos_bruto = null;
     this.test_resultado = null;
     this.input_partida = this.test_input;
@@ -43,11 +44,14 @@ export class PruebasPalabrosComponent implements OnInit {
     /*
     variables de estadistica historica
     */
-    this.historico_array_seis_rondas_y_errores=[];
+    this.historico_array_seis_rondas_y_errores = [0, 0, 0, 0, 0, 0, 0];
+    this.historico_array_seis_rondas_y_errores_porcentajes = [0, 0, 0, 0, 0, 0, 0];
 
 
 
-    this.historico_partidas_totales = null;
+    
+
+    /*
     this.historico_ronda_uno_aciertos = null;
     this.historico_ronda_dos_aciertos = null;
     this.historico_ronda_tres_aciertos = null;
@@ -55,23 +59,23 @@ export class PruebasPalabrosComponent implements OnInit {
     this.historico_ronda_cinco_aciertos = null;
     this.historico_ronda_seis_aciertos = null;
     this.historico_fallos = null;
-
+*/
 
   }
 
   ngOnInit(): void {
 
     this.test_resultado = this.testDatoResultado();
- 
+
     this.guardarDatosHistoricosCompletos(this.test_resultado);
     //guardamos los datos nuevos si la partida acaba de terminar
     if (this.input_partida == 1) {
-     // this.historico_array_datos = this.obtenerDatosHistoricos();
-      this.test_resultado = this.testDatoResultado();  
+      // this.historico_array_datos = this.obtenerDatosHistoricos();
+      this.test_resultado = this.testDatoResultado();
     }
 
     //calcular historicos
-
+    this.calcularHistoricos();
   }
 
 
@@ -80,12 +84,12 @@ export class PruebasPalabrosComponent implements OnInit {
   guardarDatosHistoricosCompletos(resultado: DatoEstadistica) {
 
     //obtenemos array
-   this.historico_array_datos_bruto = this.obtenerDatosHistoricos();
+    this.historico_array_datos_bruto = this.obtenerDatosHistoricos();
     let dato: DatoEstadistica = this.testDatoResultado()
     //sumamos
     if (this.historico_array_datos_bruto == null) {
       this.historico_array_datos_bruto = new Array;
-    } 
+    }
 
     this.historico_array_datos_bruto.push(dato);
 
@@ -103,30 +107,97 @@ export class PruebasPalabrosComponent implements OnInit {
   }
 
 
-  calcularHistoricos(){
-   // this.historico_array_seis_rondas_y_errores
+  calcularHistoricos() {
+    // this.historico_array_seis_rondas_y_errores
     // recorrer array historicos y sumar aciertos en 1a, 2a...
-    if (this.historico_array_datos_bruto!=null){
+    if (this.historico_array_datos_bruto != null) {
+
 
       for (let partida of this.historico_array_datos_bruto) {
+
+        if (partida.resultado != null) {
+
+
+
+
+          switch (partida.resultado) {
+
+            case 0:
+              this.historico_array_seis_rondas_y_errores[0] += 1;
+              break;
+            case 1:
+              this.historico_array_seis_rondas_y_errores[1] += 1;
+              break;
+
+            case 2:
+              this.historico_array_seis_rondas_y_errores[2] += 1;
+              break;
+
+            case 3:
+             // console.log("---->---->")
+             this.historico_array_seis_rondas_y_errores[3] += 1;
+            //  this.historico_array_seis_rondas_y_errores[3] += 1;
+             // console.log(this.historico_array_seis_rondas_y_errores[3]);
+              break;
+
+            case 4:
+              this.historico_array_seis_rondas_y_errores[4] +=1;
+              break;
+
+            case 5:
+              this.historico_array_seis_rondas_y_errores[5] += 1;
+              break;
+
+            case 6:
+              this.historico_array_seis_rondas_y_errores[6] += 1;
+              break;
+
+          }
+
+
+
+
+          
+          for (let ronda of this.historico_array_seis_rondas_y_errores) {
+           this.historico_partidas_totales +=  ronda;
+
+            console.log ("partidas en esta ronda"+ronda)
+            console.log( "partidas totales van por la numero: "+this.historico_partidas_totales)
         
-      if (partida.resultado!=null){
-        this.historico_array_seis_rondas_y_errores[1]= partida.resultado;
-      }
-       
+          }
+
+          let i: number = 0;
+          for (let ronda of this.historico_array_seis_rondas_y_errores) {            
+              this.historico_array_seis_rondas_y_errores_porcentajes[i]= (ronda*100)/this.historico_partidas_totales;    
+             // this.historico_array_seis_rondas_y_errores_porcentajes[i] =  parseInt(this.historico_array_seis_rondas_y_errores_porcentajes[i].toFixed(2));        
+              
+              console.log( "porcierto de la ronda  "+i)
+              console.log( this.historico_array_seis_rondas_y_errores_porcentajes[i])
+              i++;          
+          }
 
 
-
-
+        }
       }
     }
-    
+  }
 
 
 
-    }
 
 
+
+
+
+
+
+
+  /**********************
+ ******************  TEST
+ ************************/
+
+
+  // simulando que es un dato en el input
   testDatoResultado(): DatoEstadistica {
 
     let fecha: Date | number;
@@ -135,7 +206,7 @@ export class PruebasPalabrosComponent implements OnInit {
 
     let devuelve: DatoEstadistica =
     {
-      "resultado": "3",
+      "resultado": 5,
       "fecha_inicio": fecha,
       "fecha_fin": 1645703592,
       "intentos": [
@@ -162,17 +233,19 @@ export class PruebasPalabrosComponent implements OnInit {
   }
 
 
-  testDatosInicio(): Array<DatoEstadistica> {
 
-    /*
-    let boleo= Math.floor(Math.random() * 10)+1;
-    let boleo2= Math.floor(Math.random() * 10)+10;
-    let boleo3= Math.floor(Math.random() * 10)+20;
-*/
+
+
+  // array de datos test
+
+
+
+/*
+  testDatosInicio(): Array<DatoEstadistica> {
 
     let test_array_datos_vueltas: Array<DatoEstadistica> = [
       {
-        "resultado": "2",
+        "resultado": 2,
         "fecha_inicio": 1645703575,
         "fecha_fin": 1645703592,
         "intentos": [
@@ -195,7 +268,7 @@ export class PruebasPalabrosComponent implements OnInit {
         ]
       },
       {
-        "resultado": "4",
+        "resultado": 4,
         "fecha_inicio": 1645703576,
         "fecha_fin": 1645703593,
         "intentos": [
@@ -223,8 +296,10 @@ export class PruebasPalabrosComponent implements OnInit {
   }
 
 
-
-
+  contador(i: number) {
+    return new Array(i);
+  }
+*/
 
 
 }
