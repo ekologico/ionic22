@@ -3,12 +3,22 @@ import { DatoEstadistica } from 'src/app/models/datoEstadistica';
 import { PalabrickService } from '../../services/palabrick.service';
 
 
+
+
 @Component({
   selector: 'app-pruebas-palabros',
   templateUrl: './pruebas-palabros.component.html',
   styleUrls: ['./pruebas-palabros.component.css']
 })
 export class PruebasPalabrosComponent implements OnInit {
+
+
+
+ 
+
+
+
+
 
 
   test_resultado: DatoEstadistica | null;
@@ -161,8 +171,10 @@ export class PruebasPalabrosComponent implements OnInit {
 
     calcular_porcentaje_aciertos_total(){
 
-this.historico_porcentaje_aciertos = Math.round(((this.historico_partidas_totales-this.historico_array_seis_rondas_y_errores_porcentajes[0])*10)/this.historico_partidas_totales); 
+this.historico_porcentaje_aciertos = Math.round(((this.historico_partidas_totales-this.historico_array_seis_rondas_y_errores[0])*100)/this.historico_partidas_totales)
 
+//Math.round((((this.historico_partidas_totales) - (this.historico_array_seis_rondas_y_errores_porcentajes[0]))*10)/this.historico_partidas_totales); 
+console.log(this.historico_array_seis_rondas_y_errores_porcentajes[0] );
     }
 
 
@@ -183,6 +195,7 @@ this.historico_porcentaje_aciertos = Math.round(((this.historico_partidas_totale
 
     let devuelve: DatoEstadistica =
     {
+      "resultado_palabra":"PAPEL",
       "resultado": boleo,
       "fecha_inicio": fecha,
       "fecha_fin": 1645703592,

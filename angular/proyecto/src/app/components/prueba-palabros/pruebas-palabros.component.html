@@ -1,8 +1,20 @@
-<h1>Prueba palabro on the records</h1>
+<h1 class="text-center">PalaBrick</h1>
+<hr>
 
-<h3 *ngIf="input_partida">
-    Resultado
-    {{input_partida.resultado}}</h3>
+<p class= "text-center" 
+   *ngIf="(input_partida) && (input_partida.resultado != 0) ">
+    Acertaste en la ronda {{input_partida.resultado}}</p>
+
+    <p class= "text-center bg_amarillo_corporativo" 
+   *ngIf="(input_partida) && (input_partida.resultado == 0) ">
+   Fallaste</p>
+
+    <p class= "text-center  col-4 offset-4" *ngIf="(input_partida) && (input_partida.resultado == 0)  ">
+        Palabra: {{input_partida.resultado_palabra}}
+        </p>
+
+
+
 
 <h2 class="text-center">Estadísticas</h2>
 <div class="row">
@@ -21,16 +33,16 @@
 
 
 <div class="col-12 ">
-<ul class="distribucion_resultados">
-    <li *ngFor="let item of historico_array_seis_rondas_y_errores_porcentajes | slice:1 ; index as i">
-        {{i+1}}:
-        <span class="bloque_porcentaje" *ngFor="let item of [].constructor(item); let i = index"></span>
-        <span class="">({{item*10}}%)</span>
-    </li>
-    <li>X: <span class="bloque_porcentaje historico_error_estadisticas"
-            *ngFor="let item of [].constructor(historico_array_seis_rondas_y_errores_porcentajes[0]); let i = index"></span>
-        ({{historico_array_seis_rondas_y_errores_porcentajes[0]*10}}%)</li>
-</ul>
+    <ul class="distribucion_resultados">
+        <li *ngFor="let item of historico_array_seis_rondas_y_errores_porcentajes | slice:1 ; index as i">
+            {{i+1}}:
+            <span class="bloque_porcentaje" *ngFor="let item of [].constructor(item); let i = index"></span>
+            <span class="">({{item*10}}%)</span>
+        </li>
+        <li>X: <span class="bloque_porcentaje historico_error_estadisticas"
+                *ngFor="let item of [].constructor(historico_array_seis_rondas_y_errores_porcentajes[0]); let i = index"></span>
+            ({{historico_array_seis_rondas_y_errores_porcentajes[0]*10}}%)</li>
+    </ul>
 </div>
 
 
@@ -43,3 +55,5 @@
     </li>
 </ul>
 -->
+
+

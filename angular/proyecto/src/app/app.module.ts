@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlumnoPagComponent } from './components/alumno-pag/alumno-pag.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,12 +34,14 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     AlumnoPagComponent
   ],
   imports: [
+
     BrowserModule,
     MatPaginatorModule,
     AppRoutingModule,
     FormsModule,
     LayoutModule, 
     HttpClientModule, FontAwesomeModule, BrowserAnimationsModule
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

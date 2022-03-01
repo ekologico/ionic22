@@ -1,3 +1,4 @@
+
 .bloque_porcentaje {
 /* background-color: #ccc; */
 /* border-style: solid;
@@ -5,7 +6,7 @@ border-width: 1px; */
 /* margin:1px; */
 
 padding-left: 5em;
-background-color: green;
+background-color: #0d5f5a;
 
 }
 
@@ -16,7 +17,30 @@ background-color: green;
 
 
 .historico_error_estadisticas{
-    background-color: red;
+      background-color: #e04e2d;
 
+}
 
+.bg_rojo_corporativo {
+    background-color: #e04e2d;
+}
+
+.bg_amarillo_corporativo {
+    background-color: #f6a942;
+}
+
+.bg_verde_corporativo {
+    background-color: #0d5f5a;
+}
+
+.bg_azul_corporativo {
+    background-color: #00c2cb;
+}
+
+.bg_gris_oscuro_corporativo {
+    background-color: #545454;
+}
+
+.bg_gris_claro_corporativo {
+    background-color: #ccc;
 }
