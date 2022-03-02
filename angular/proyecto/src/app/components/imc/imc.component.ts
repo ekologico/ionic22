@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Imc } from 'src/app/imc';
 import { TipoImc } from 'src/app/tipo-imc';
+import { GraficoComponent } from '../grafico/grafico.component';
+
+
+
+
+
 
 
 @Component({
@@ -16,8 +22,17 @@ export class ImcComponent implements OnInit {
   scontador: string | null;
   ncontador: number | null;
 
+  mediaimc:number;
+  maximoimc:number;
+  minimoimc:number;
+
+  @ViewChild(GraficoComponent) hijo_grafico!:GraficoComponent;
 
   constructor() {
+
+    this.mediaimc=0;
+    this.maximoimc=0;
+    this.minimoimc=0;
     this.oimc = new Imc();
     this.array_imc = new Array<Imc>();
     this.ultima_vez = localStorage.getItem('ultima_visita');
@@ -38,8 +53,6 @@ export class ImcComponent implements OnInit {
 
     localStorage.setItem('ultima_visita', String(new Date()));
     localStorage.setItem('contador', String(this.ncontador));
-
-
 
   }
 
@@ -91,6 +104,16 @@ export class ImcComponent implements OnInit {
     localStorage.setItem('tabla_imc_historicos', JSON.stringify(this.array_imc));
     console.log(JSON.stringify(this.array_imc));
 
+
+
+    this.mediaimc= this.calcularMedia(this.array_imc);
+    this.maximoimc= this.calcularMaximo(this.array_imc);
+    this.minimoimc= this.calcularMinimo(this.array_imc);
+
+    this.hijo_grafico.actualizaGraficos(this.mediaimc,this.maximoimc, this.minimoimc );
+
+
+
   }
 
   clonarImc(imc_viejo: Imc): Imc {
@@ -140,7 +163,7 @@ export class ImcComponent implements OnInit {
         this.array_imc = JSON.parse(localStorage.getItem('tabla_imc_historicos'));
       }
       */
-
+   
   }
 
   ordenarPorAtributo(atributo: string): void {
@@ -169,4 +192,66 @@ export class ImcComponent implements OnInit {
 
   }
 
+
+  //TODO: hacer calcularMedia Maximo y Minimo de IMC
+  calcularMedia (array1:Array<Imc>):number
+  {
+    let media = 0;
+    let total = 0;
+
+      array1.forEach(oimc=> {
+        total = total + oimc.imc;
+      });
+
+      media = total/array1.length;
+
+    return media;
+
+  }
+
+  calcularMinimo (array1:Array<Imc>):number
+  {
+    let minimo = array1[0].imc;
+
+    array1.forEach(oimc=> {
+      if (oimc.numerico<minimo)
+      {
+        minimo=oimc.imc;
+      }
+    });
+      
+    return minimo;
+
+  }
+
+  calcularMaximo (array1:Array<Imc>):number
+  {
+    let maximo = array1[0].imc;
+
+    array1.forEach(oimc=> {
+      if (oimc.numerico>maximo)
+      {
+        maximo=oimc.imc;
+      }
+    });
+      
+    return maximo;
+
+  }
+
+  
+
 } // fib de la clase
+
+
+
+
+
+
+
+
+
+
+
+
+

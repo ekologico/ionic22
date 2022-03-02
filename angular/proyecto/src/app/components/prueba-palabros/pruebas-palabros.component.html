@@ -37,11 +37,11 @@
         <li *ngFor="let item of historico_array_seis_rondas_y_errores_porcentajes | slice:1 ; index as i">
             {{i+1}}:
             <span class="bloque_porcentaje" *ngFor="let item of [].constructor(item); let i = index"></span>
-            <span class="">({{item*10}}%)</span>
+            <span class="">({{item*10}}%)({{historico_array_seis_rondas_y_errores_porcentajes[i]}})</span>
         </li>
         <li>X: <span class="bloque_porcentaje historico_error_estadisticas"
                 *ngFor="let item of [].constructor(historico_array_seis_rondas_y_errores_porcentajes[0]); let i = index"></span>
-            ({{historico_array_seis_rondas_y_errores_porcentajes[0]*10}}%)</li>
+            ({{historico_array_seis_rondas_y_errores_porcentajes[0]*10}}%)({{historico_array_seis_rondas_y_errores_porcentajes[0]}})</li>
     </ul>
 </div>
 

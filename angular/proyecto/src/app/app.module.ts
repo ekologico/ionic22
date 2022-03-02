@@ -21,6 +21,12 @@ import { AlumnoPagComponent } from './components/alumno-pag/alumno-pag.component
 import {MatPaginatorModule} from '@angular/material/paginator';
 
 
+
+import { GraficoComponent } from './components/grafico/grafico.component';
+import { NgChartsModule } from 'ng2-charts';
+import { GraficopalabrickComponent } from './components/graficopalabrick/graficopalabrick.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +37,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     AlumnoComponent,
     FormularioAlumnoComponent,
     PruebasPalabrosComponent,
-    AlumnoPagComponent
+    AlumnoPagComponent,
+    GraficoComponent,
+    GraficopalabrickComponent
   ],
   imports: [
 
@@ -40,7 +48,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     AppRoutingModule,
     FormsModule,
     LayoutModule, 
-    HttpClientModule, FontAwesomeModule, BrowserAnimationsModule
+    HttpClientModule, FontAwesomeModule, BrowserAnimationsModule,
+    NgChartsModule
  
   ],
   providers: [],

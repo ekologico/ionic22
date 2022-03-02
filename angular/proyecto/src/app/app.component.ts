@@ -4,6 +4,7 @@ app componentes es el raiz (?)
 
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

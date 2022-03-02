@@ -110,6 +110,7 @@ export class PruebasPalabrosComponent implements OnInit {
 
             case 0:
               this.historico_array_seis_rondas_y_errores[0] += 1;
+              console.log("0000000000")
               break;
             case 1:
               this.historico_array_seis_rondas_y_errores[1] += 1;
@@ -188,11 +189,9 @@ console.log(this.historico_array_seis_rondas_y_errores_porcentajes[0] );
   // simulando que es un dato en el input
   testDatoResultado(): DatoEstadistica {
     let boleo:number= Math.round(Math.random() * (6 - 0) + 0);
-
+//boleo= 1;
     let fecha: Date | number;
     fecha = Date.now();
-
-
     let devuelve: DatoEstadistica =
     {
       "resultado_palabra":"PAPEL",
