@@ -17,7 +17,8 @@
 
 
 <h2 class="text-center">Estadísticas</h2>
-<div class="row">
+
+<div class="row m-0">
     <div class="col-6 text-center">
         <h3 class="display-1 col-12">{{historico_partidas_totales}}</h3>
         <span class="display-7">Jugadas</span>
@@ -32,7 +33,7 @@
 <h3 class="text-center">DISTRIBUCIÓN DE RESULTADOS</h3>
 
 
-<div class="col-12 ">
+<div class="col-sm-12  col-lg-6   mx-auto ">
     <ul class="distribucion_resultados">
         <li *ngFor="let item of historico_array_seis_rondas_y_errores_porcentajes | slice:1 ; index as i">
             {{i+1}}:
@@ -44,6 +45,7 @@
             ({{historico_array_seis_rondas_y_errores_porcentajes[0]*10}}%)({{historico_array_seis_rondas_y_errores_porcentajes[0]}})</li>
     </ul>
 </div>
+
 
 
 <app-graficopalabrick [array_bruto_datos]="historico_array_datos_bruto" ></app-graficopalabrick>
