@@ -13,11 +13,11 @@ import { DatoEstadistica } from 'src/app/models/datoEstadistica';
 export class GraficopalabrickComponent implements OnInit {
 
 
-  @Input() media!:number;
-  @Input() maximo!:number;
-  @Input() minimo!:number;
+  @Input() media!: number;
+  @Input() maximo!: number;
+  @Input() minimo!: number;
   @Input() array_bruto_datos!: Array<DatoEstadistica>;
-  
+
 
 
   lineChartData!: ChartConfiguration['data'];
@@ -25,6 +25,9 @@ export class GraficopalabrickComponent implements OnInit {
   lineChartOptions: ChartConfiguration['options'];
 
   lineChartType: ChartType = 'line';
+  ejeX: Array<string>;
+  ejeY: Array<number>;
+  datos: Array<number>;
 
 
   constructor() {
@@ -32,18 +35,21 @@ export class GraficopalabrickComponent implements OnInit {
     this.maximo=5;
     this.minimo=5; */
 
-   }
 
-  
- 
-   actualizaGraficos (media:number, maximo:number, minimo:number)
-   {
-     //this.lineChartData.datasets[0].data = [this.media, this.maximo, this.minimo];
-     this.lineChartData = {
+
+
+
+  }
+
+
+
+  actualizaGraficos(ejeX: Array<string>, ejeY: Array<number>, datos: Array<number>) {
+    //this.lineChartData.datasets[0].data = [this.media, this.maximo, this.minimo];
+    this.lineChartData = {
       datasets: [
         {
-          data: [ media,maximo,minimo],
-          label: 'victorias',
+          data: datos,
+          label: 'Aciertos por ronda',
           backgroundColor: 'rgba(148,159,177,0.2)',
           borderColor: 'rgba(148,159,177,1)',
           pointBackgroundColor: 'rgba(148,159,177,1)',
@@ -53,14 +59,17 @@ export class GraficopalabrickComponent implements OnInit {
           fill: 'origin',
         }
       ],
-      labels: [ 'MEDIA IMC', 'MAXIMO IMC', 'MINIMO IMC' ]
+      labels: ejeX
     };
-   }
+  }
 
   ngOnInit(): void {
 
-    this.actualizaGraficos(this.media, this.maximo, this.minimo);  
-  
+    this.filtarDatos();
+
+
+    this.actualizaGraficos(this.ejeX, this.ejeY, this.datos);
+
     this.lineChartOptions = {
       elements: {
         line: {
@@ -71,9 +80,9 @@ export class GraficopalabrickComponent implements OnInit {
         // We use this empty structure as a placeholder for dynamic theming.
         x: {},
         'y-axis-0':
-          {
-            position: 'left',
-          },
+        {
+          position: 'left',
+        },
         'y-axis-1': {
           position: 'right',
           grid: {
@@ -84,19 +93,48 @@ export class GraficopalabrickComponent implements OnInit {
           }
         }
       },
-  
+
       plugins: {
         legend: { display: true }
       }
     };
   }
 
-  
 
-  
- 
 
-  
+  filtarDatos(): void {
+    //array_bruto_datos
+
+
+
+    this.datos = [1, 2, 3, 4, 5, 6, 6, 6, 4, 3];
+    this.ejeY = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    this.ejeX = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+
+
+
+
+    let i = 0;
+    for (let partida of this.array_bruto_datos) {
+      i++
+
+      if (i < 100) {
+
+
+        this.datos.push(partida.resultado);
+        this.ejeX.push(i.toString());
+
+      }
+
+    }
+
+
+
+
+  }
+
+
+
 
 }
 

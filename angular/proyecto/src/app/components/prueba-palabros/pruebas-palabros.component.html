@@ -2,14 +2,14 @@
 <hr>
 
 <p class= "text-center" 
-   *ngIf="(input_partida) && (input_partida.resultado != 0) ">
+   *ngIf="(input_partida) && (input_partida.resultado != 7) ">
     Acertaste en la ronda {{input_partida.resultado}}</p>
 
     <p class= "text-center bg_amarillo_corporativo" 
-   *ngIf="(input_partida) && (input_partida.resultado == 0) ">
+   *ngIf="(input_partida) && (input_partida.resultado == 7) ">
    Fallaste</p>
 
-    <p class= "text-center  col-4 offset-4" *ngIf="(input_partida) && (input_partida.resultado == 0)  ">
+    <p class= "text-center  col-4 offset-4" *ngIf="(input_partida) && (input_partida.resultado == 7)  ">
         Palabra: {{input_partida.resultado_palabra}}
         </p>
 
@@ -35,14 +35,58 @@
 
 <div class="col-sm-12  col-lg-6   mx-auto ">
     <ul class="distribucion_resultados">
-        <li *ngFor="let item of historico_array_seis_rondas_y_errores_porcentajes | slice:1 ; index as i">
-            {{i+1}}:
-            <span class="bloque_porcentaje" *ngFor="let item of [].constructor(item); let i = index"></span>
-            <span class="">({{item*10}}%)({{historico_array_seis_rondas_y_errores_porcentajes[i]}})</span>
+
+        <li>1: <span class="bloque_porcentaje"
+            *ngFor="let item of [].constructor(historico_array_seis_rondas_y_errores_porcentajes[0]); let i = index"></span>
+            ({{historico_array_seis_rondas_y_errores_porcentajes[0]}}%)({{historico_array_seis_rondas_y_errores[0]}})
         </li>
+
+        <li>2: <span class="bloque_porcentaje"
+            *ngFor="let item of [].constructor(historico_array_seis_rondas_y_errores_porcentajes[1]); let i = index"></span>
+            ({{historico_array_seis_rondas_y_errores_porcentajes[1]}}%)({{historico_array_seis_rondas_y_errores[1]}})
+        </li>
+
+        <li>3: <span class="bloque_porcentaje"
+            *ngFor="let item of [].constructor(historico_array_seis_rondas_y_errores_porcentajes[2]); let i = index"></span>
+            ({{historico_array_seis_rondas_y_errores_porcentajes[2]}}%)({{historico_array_seis_rondas_y_errores[2]}})
+        </li>
+
+
+        <li>4: <span class="bloque_porcentaje"
+            *ngFor="let item of [].constructor(historico_array_seis_rondas_y_errores_porcentajes[3]); let i = index"></span>
+            ({{historico_array_seis_rondas_y_errores_porcentajes[3]}}%)({{historico_array_seis_rondas_y_errores[3]}})
+        </li>
+
+        <li>5: <span class="bloque_porcentaje"
+            *ngFor="let item of [].constructor(historico_array_seis_rondas_y_errores_porcentajes[4]); let i = index"></span>
+            ({{historico_array_seis_rondas_y_errores_porcentajes[4]}}%)({{historico_array_seis_rondas_y_errores[4]}})
+        </li>
+
+        <li>6: <span class="bloque_porcentaje"
+            *ngFor="let item of [].constructor(historico_array_seis_rondas_y_errores_porcentajes[5]); let i = index"></span>
+            ({{historico_array_seis_rondas_y_errores_porcentajes[5]}}%)({{historico_array_seis_rondas_y_errores[5]}})
+        </li>
+
         <li>X: <span class="bloque_porcentaje historico_error_estadisticas"
-                *ngFor="let item of [].constructor(historico_array_seis_rondas_y_errores_porcentajes[0]); let i = index"></span>
-            ({{historico_array_seis_rondas_y_errores_porcentajes[0]*10}}%)({{historico_array_seis_rondas_y_errores_porcentajes[0]}})</li>
+            *ngFor="let item of [].constructor(historico_array_seis_rondas_y_errores_porcentajes[6]); let i = index"></span>
+            ({{historico_array_seis_rondas_y_errores_porcentajes[6]}}%)({{historico_array_seis_rondas_y_errores[6]}})
+    </li>
+
+
+<hr>
+
+
+        <li *ngFor="let item of historico_array_seis_rondas_y_errores_porcentajes_pintar  ; index as i">
+           {{i+1}}:   
+            <span class="bloque_porcentaje" *ngFor="let item of [].constructor(item); let i = index"></span>
+            <span class="">({{historico_array_seis_rondas_y_errores_porcentajes[i]}}%)({{historico_array_seis_rondas_y_errores_porcentajes_pintar[i]}})</span>
+        </li>
+
+
+        <li>X: <span class="bloque_porcentaje historico_error_estadisticas"
+                *ngFor="let item of [].constructor(historico_array_seis_rondas_y_errores_porcentajes[6]); let i = index"></span>
+                ({{historico_array_seis_rondas_y_errores_porcentajes[6]}}%)({{historico_array_seis_rondas_y_errores_porcentajes_pintar[6]}})
+        </li>
     </ul>
 </div>
 
