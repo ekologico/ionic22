@@ -146,7 +146,7 @@ export class PruebasPalabrosComponent implements OnInit {
       this.calcularPorcentajes_rondas()
       this.calcular_porcentaje_aciertos_total();
 
-      console.log("sssss"+this.historico_array_seis_rondas_y_errores[0]);
+      console.log("----"+this.historico_array_seis_rondas_y_errores[0]);
     }
   
 

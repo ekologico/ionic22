@@ -45,21 +45,32 @@ export class GraficopalabrickComponent implements OnInit {
 
   actualizaGraficos(ejeX: Array<string>, ejeY: Array<number>, datos: Array<number>) {
     //this.lineChartData.datasets[0].data = [this.media, this.maximo, this.minimo];
+    
+    //const NUMBER_CFG = {count: 100, min: 0, max: 100};
     this.lineChartData = {
+      
+   
+    
       datasets: [
-        {
-          data: datos,
+        {        
+          data: datos,         
           label: 'Aciertos por ronda',
-          backgroundColor: 'rgba(148,159,177,0.2)',
-          borderColor: 'rgba(148,159,177,1)',
-          pointBackgroundColor: 'rgba(148,159,177,1)',
+          backgroundColor: '#0d5f5a',
+          borderColor: '#0d5f5a',
+          pointBackgroundColor: "#333",
           pointBorderColor: '#fff',
           pointHoverBackgroundColor: '#fff',
           pointHoverBorderColor: 'rgba(148,159,177,0.8)',
           fill: 'origin',
+          
+          borderWidth:1
+          
+          
         }
+        
       ],
       labels: ejeX
+      
     };
   }
 
@@ -78,20 +89,16 @@ export class GraficopalabrickComponent implements OnInit {
       },
       scales: {
         // We use this empty structure as a placeholder for dynamic theming.
+     
         x: {},
         'y-axis-0':
         {
           position: 'left',
+          suggestedMin: 6,
+          suggestedMax: 0
         },
-        'y-axis-1': {
-          position: 'right',
-          grid: {
-            color: 'rgba(255,0,0,0.3)',
-          },
-          ticks: {
-            color: 'red'
-          }
-        }
+          
+        
       },
 
       plugins: {
@@ -108,7 +115,7 @@ export class GraficopalabrickComponent implements OnInit {
 
 
     this.datos = [1, 2, 3, 4, 5, 6, 6, 6, 4, 3];
-    this.ejeY = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    //this.ejeY = [0,1, 2, 3, 4, 5, 6,7];
     this.ejeX = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
 
@@ -120,11 +127,15 @@ export class GraficopalabrickComponent implements OnInit {
 
       if (i < 100) {
 
-
+if (partida.resultado==7){
+  partida.resultado=0;
+}
         this.datos.push(partida.resultado);
         this.ejeX.push(i.toString());
 
       }
+
+      
 
     }
 

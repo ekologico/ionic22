@@ -12,7 +12,11 @@ background-color: #0d5f5a;
 
 .distribucion_resultados li{
     list-style:none;
-    margin-right: 10px;
+    /*margin-right: 10px;*/
+}
+
+.distribucion_resultados ul {
+    padding-left:0;    
 }
 
 
@@ -43,4 +47,16 @@ background-color: #0d5f5a;
 
 .bg_gris_claro_corporativo {
     background-color: #ccc;
+}
+
+
+.marcador{
+    background-color: #f6a94261;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.fallaste{
+    background-color: #e04e2d;  
+    color:white;
 }
