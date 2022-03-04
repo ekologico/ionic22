@@ -54,9 +54,52 @@ background-color: #0d5f5a;
     background-color: #f6a94261;
     border-radius: 5px;
     padding: 5px;
+  
 }
 
 .fallaste{
     background-color: #e04e2d;  
     color:white;
+}
+
+
+.cuadrado_{
+   
+    background-color: red;   
+    padding: 10px;
+    margin-left:15px
+
+}
+
+.cuadrado_1{
+    background-color: #0d5f5a;   
+    padding: 10px;
+    margin-left:15px
+}
+
+.cuadrado_-1{
+    background-color:    #ccc;   
+    width: 20px;
+    padding: 10px;
+    margin-left:15px
+}
+
+.cuadrado_0{
+    background-color:    #f6a942;;   
+    width: 20px;
+    padding: 10px;
+    margin-left:15px
+}
+
+.distribucion_resultados li{
+    padding: 5px;
+    margin-left:15px;
+    margin: 20px;
+}
+
+.resultado_marcador{
+    text-align: center;
+    padding: 5px;
+    margin-left:15px;
+    margin: 20px;
 }

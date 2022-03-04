@@ -52,12 +52,16 @@ export class PruebasPalabrosComponent implements OnInit {
 
     //this.input_partida = this.testDatoResultado();
   this.input_partida = this.testDatoResultado()
-    this.guardarDatosHistoricosCompletos(this.input_partida);
+
+  this.guardarDatosHistoricosCompletos(this.input_partida);
     //guardamos los datos nuevos si la partida acaba de terminar
     
     
     //calcular historicos
     this.calcularHistoricos();
+
+console.log("ooooooo")
+    console.log(this.input_partida)
   }
 
 
@@ -208,6 +212,14 @@ console.log(this.historico_array_seis_rondas_y_errores_porcentajes[0] );
           "letra5": 1
         },
         {
+          "palabra": "PAPEL",
+          "letra1": 0,
+          "letra2": -1,
+          "letra3": 1,
+          "letra4": 0,
+          "letra5": 1
+        },
+        {
           "palabra": "PADEL",
           "letra1": 1,
           "letra2": 1,
@@ -222,10 +234,7 @@ console.log(this.historico_array_seis_rondas_y_errores_porcentajes[0] );
   }
 
 
-filtrarDatosGraficaHistoricos(){
 
-  
-}
 
 
 }

@@ -60,7 +60,10 @@ export class GraficopalabrickComponent implements OnInit {
         'y-axis-0':
         {
           position: 'left'    
-        }
+        },
+        ticks: {
+          reverse: true
+      },
              
       },
 
@@ -80,7 +83,7 @@ export class GraficopalabrickComponent implements OnInit {
       datasets: [
         {        
           data: datos,         
-          label: 'Aciertos por ronda',
+          label: 'Victoria en la ronda',
           backgroundColor: '#0d5f5a',
           borderColor: '#0d5f5a',
           pointBackgroundColor: "#333",
@@ -102,22 +105,23 @@ export class GraficopalabrickComponent implements OnInit {
   filtarDatos(): void {
     //array_bruto_datos
 
-    this.datos = [1, 2, 3, 4, 5, 6, 6, 6, 4, 3];
+    this.datos = [];
     //this.ejeY = [0,1, 2, 3, 4, 5, 6,7];
-    this.ejeX = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+    this.ejeX = [];
 
     let i = 0;
     for (let partida of this.array_bruto_datos) {
       i++
 
-      if (i < 100) {
+      if (i < 50) {
 
 if (partida.resultado==7){
   partida.resultado=0;
 }
         this.datos.push(partida.resultado);
         this.ejeX.push(i.toString());
-
+        console.log("xxx: "+this.ejeX)
+      //  this.ejeY.push(i);
       }
 
     }

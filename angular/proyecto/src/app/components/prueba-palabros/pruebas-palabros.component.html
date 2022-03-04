@@ -1,4 +1,21 @@
 <h1 class="text-center">PalaBrick</h1>
+<div class="col-sm-12  col-lg-6  mx-auto">
+
+<!-- -->
+<div class="resultado_marcador" *ngFor="let item of [].constructor(input_partida.intentos); let i = index">
+    <div class="resultado_marcador" *ngFor="let item2 of item; let i = index">
+        <span class="cuadrado_{{item2.letra1}}"></span>
+        <span class="cuadrado_{{item2.letra2}}"></span>
+        <span class="cuadrado_{{item2.letra3}}"></span>
+        <span class="cuadrado_{{item2.letra4}}"></span>
+        <span class="cuadrado_{{item2.letra5}}"></span>
+    </div>
+
+</div>
+
+
+</div>
+
 <hr>
 
 <p class="text-center" *ngIf="(input_partida) && (input_partida.resultado != 7) ">
@@ -79,4 +96,3 @@
 </div>
 
 <app-graficopalabrick [array_bruto_datos]="historico_array_datos_bruto"></app-graficopalabrick>
-

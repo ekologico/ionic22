@@ -117,7 +117,7 @@ export class AlumnoComponent implements OnInit {
     this.getAlumnos();
 
     if (this.platform.is("android"))
-    {alert("estoy en android");} else  {alert("estoy en pc");}
+    {alert("estoy en android!!!!!");} else  {alert("estoy en pc!!!!!");}
 
     /*this.servicio_alumnos.obtenerAlumnosConCabeceras().subscribe(
       //"observador"--el objeto que reciba la llamada 
