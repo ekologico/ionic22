@@ -18,13 +18,16 @@ export class GraficopalabrickComponent implements OnInit {
   @Input() minimo!: number;
   @Input() array_bruto_datos!: Array<DatoEstadistica>;
 
-
-
   lineChartData!: ChartConfiguration['data'];
 
   lineChartOptions: ChartConfiguration['options'];
 
   lineChartType: ChartType = 'line';
+
+
+
+
+
   ejeX: Array<string>;
   ejeY: Array<number>;
   datos: Array<number>;
@@ -34,13 +37,38 @@ export class GraficopalabrickComponent implements OnInit {
     /* this.media=5;
     this.maximo=5;
     this.minimo=5; */
-
-
-
-
-
   }
 
+
+  ngOnInit(): void {
+
+    this.filtarDatos();
+
+
+    this.actualizaGraficos(this.ejeX, this.ejeY, this.datos);
+
+    this.lineChartOptions = {
+      elements: {
+        line: {
+          tension: 0
+        }
+      },
+      scales: {
+        // We use this empty structure as a placeholder for dynamic theming.
+     
+        x: {},
+        'y-axis-0':
+        {
+          position: 'left'    
+        }
+             
+      },
+
+      plugins: {
+        legend: { display: true }
+      }
+    };
+  }
 
 
   actualizaGraficos(ejeX: Array<string>, ejeY: Array<number>, datos: Array<number>) {
@@ -48,9 +76,7 @@ export class GraficopalabrickComponent implements OnInit {
     
     //const NUMBER_CFG = {count: 100, min: 0, max: 100};
     this.lineChartData = {
-      
-   
-    
+  
       datasets: [
         {        
           data: datos,         
@@ -63,9 +89,7 @@ export class GraficopalabrickComponent implements OnInit {
           pointHoverBorderColor: 'rgba(148,159,177,0.8)',
           fill: 'origin',
           
-          borderWidth:1
-          
-          
+          borderWidth:1               
         }
         
       ],
@@ -74,52 +98,13 @@ export class GraficopalabrickComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {
-
-    this.filtarDatos();
-
-
-    this.actualizaGraficos(this.ejeX, this.ejeY, this.datos);
-
-    this.lineChartOptions = {
-      elements: {
-        line: {
-          tension: 0.5
-        }
-      },
-      scales: {
-        // We use this empty structure as a placeholder for dynamic theming.
-     
-        x: {},
-        'y-axis-0':
-        {
-          position: 'left',
-          suggestedMin: 6,
-          suggestedMax: 0
-        },
-          
-        
-      },
-
-      plugins: {
-        legend: { display: true }
-      }
-    };
-  }
-
-
 
   filtarDatos(): void {
     //array_bruto_datos
 
-
-
     this.datos = [1, 2, 3, 4, 5, 6, 6, 6, 4, 3];
     //this.ejeY = [0,1, 2, 3, 4, 5, 6,7];
     this.ejeX = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-
-
-
 
     let i = 0;
     for (let partida of this.array_bruto_datos) {
@@ -135,17 +120,9 @@ if (partida.resultado==7){
 
       }
 
-      
-
     }
 
-
-
-
   }
-
-
-
 
 }
 
